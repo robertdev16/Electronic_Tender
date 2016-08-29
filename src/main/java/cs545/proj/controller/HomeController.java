@@ -14,13 +14,32 @@ public class HomeController {
   	@Autowired
  	private MemberService customerService;
 
-	@RequestMapping({"/","/welcome"})
+	@RequestMapping({"/","/home"})
 	public String welcome(Model model) {
 		
-		model.addAttribute("greeting", "Welcome to our community, Kimosabe!!");
-		model.addAttribute("tagline", "The one and only place to live, work and play!!");
+		model.addAttribute("greeting", "Welcome to Home");
+		return "home";
+	}
+	
+	@RequestMapping("/tenders")
+	public String tenders(Model model) {
 		
-		return "welcome";
+		model.addAttribute("greeting", "Welcome to Tender List");
+		return "home";
+	}
+	
+	@RequestMapping({"/subscribe"})
+	public String subscribe(Model model) {
+		
+		model.addAttribute("greeting", "Welcome to Subscribe");
+		return "home";
+	}
+	
+	@RequestMapping({"/contact"})
+	public String contact(Model model) {
+		
+		model.addAttribute("greeting", "Welcome to Contact Us Page");
+		return "home";
 	}
  
 }
