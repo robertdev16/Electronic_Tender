@@ -15,11 +15,11 @@
 
 <center>
 
-<img src="<spring:url value="/resource/images/403-forbidden-error.jpg"  htmlEscape="true" />" alt="Page not found  JSP!!!"  />
+<img src="<spring:url value="/resources/images/403-forbidden-error.jpg"  htmlEscape="true" />" alt="Page not found  JSP!!!"  />
 
 <H2>${requestScope['javax.servlet.error.message']}</H2>
  
- <p><button type=button onclick=window.location.href="<spring:url value="/welcome" />">Home</button></p>
+ <p><button type=button onclick=window.location.href="<spring:url value="/" />">Home</button></p>
 
 </center> 
   </body>

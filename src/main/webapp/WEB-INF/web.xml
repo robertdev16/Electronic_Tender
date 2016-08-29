@@ -9,6 +9,7 @@
 				/WEB-INF/spring/context/DispatcherServlet-context.xml
 			</param-value>
     </init-param>
+    <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>DispatcherServlet</servlet-name>
@@ -26,7 +27,7 @@
 			org.springframework.web.context.ContextLoaderListener 
 		</listener-class>
   </listener>
-<!--   <filter>
+  <filter>
     <filter-name>springSecurityFilterChain</filter-name>
     <filter-class>
 			org.springframework.web.filter.DelegatingFilterProxy
@@ -35,7 +36,7 @@
   <filter-mapping>
     <filter-name>springSecurityFilterChain</filter-name>
     <url-pattern>/*</url-pattern>
-  </filter-mapping> -->
+  </filter-mapping>
   <error-page>
     <error-code>404</error-code>
     <location>/WEB-INF/views/page-not-found.jsp</location>
