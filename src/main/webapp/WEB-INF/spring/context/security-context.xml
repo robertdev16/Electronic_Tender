@@ -16,7 +16,7 @@
 
 		<security:csrf disabled="true"/>
 		
-		<sec:intercept-url pattern="/**" 
+		<security:intercept-url pattern="/**" 
 		access="hasAnyRole('ROLE_ANONYMOUS', 'ROLE_USER', 'ROLE_ADMIN')" />
 
 
