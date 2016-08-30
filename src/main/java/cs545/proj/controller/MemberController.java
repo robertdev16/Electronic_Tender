@@ -26,7 +26,7 @@ public class MemberController {
 
 	@RequestMapping
 	public String listMembers(Model model) {
-		model.addAttribute("members", memberService.findAll());
+//		model.addAttribute("members", memberService.findAll());
 		return "members";
 	}
 	

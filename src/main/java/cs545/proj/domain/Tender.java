@@ -1,70 +1,101 @@
 package cs545.proj.domain;
 
 import java.io.Serializable;
-import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.validation.Valid;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
-
 public class Tender implements Serializable {
 
 	private static final long serialVersionUID = -3532377236419382983L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int tenderId;
+	private int id;
+	
+	@NotBlank
+	private String refId;
 
-	@NotEmpty(message = "The tender name must not be empty")
-	private String tenderName;
+	@NotBlank
+	private String title;
 
+	@ManyToMany
 	private List<Catagory> categoryList;
-	private String tenderDescription;
+	
+	@NotBlank
+	private String description;
 
-    @DateTimeFormat(pattern = "MM-dd-yyyy")
-	private Date tenderPostDate;
-    @DateTimeFormat(pattern = "MM-dd-yyyy")
-	private Date tenderDeadline;
-
-	private String tenderOrganization;
-
-    @JsonIgnore
-    private MultipartFile tenderDocument;
+    @NotBlank
+    @Email
+    private String contactEmail;
     
-	@Lob
-	@Column(length = 100000)
-	@Cache(usage=CacheConcurrencyStrategy.NONE)
-	@JsonIgnore
-	private Blob imagebytes;
+    @NotBlank
+    private String contactPerson;
+    
+    @Valid
+    @OneToOne(cascade=CascadeType.ALL)
+    private Phone phone;
 
-	public int getTenderId() {
-		return tenderId;
+    @Valid
+    @OneToOne(cascade=CascadeType.ALL)
+    private Address address;
+	
+    @DateTimeFormat(pattern = "MM-dd-yyyy")
+    @Temporal(TemporalType.TIMESTAMP)
+	private Date postDate;
+    
+    @DateTimeFormat(pattern = "MM-dd-yyyy")
+    @Temporal(TemporalType.TIMESTAMP)
+	private Date deadline;
+
+    @NotBlank
+    private String agency;
+
+	@Transient
+    private MultipartFile tenderMultipart;
+    
+    @NotBlank
+    private String attachmentFileName;
+
+	public int getId() {
+		return id;
 	}
 
-	public void setTenderId(int tenderId) {
-		this.tenderId = tenderId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getTenderName() {
-		return tenderName;
+	public String getRefId() {
+		return refId;
 	}
 
-	public void setTenderName(String tenderName) {
-		this.tenderName = tenderName;
+	public void setRefId(String refId) {
+		this.refId = refId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public List<Catagory> getCategoryList() {
@@ -75,56 +106,84 @@ public class Tender implements Serializable {
 		this.categoryList = categoryList;
 	}
 
-	public String getTenderDescription() {
-		return tenderDescription;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setTenderDescription(String tenderDescription) {
-		this.tenderDescription = tenderDescription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Date getTenderPostDate() {
-		return tenderPostDate;
+	public String getContactEmail() {
+		return contactEmail;
 	}
 
-	public void setTenderPostDate(Date tenderPostDate) {
-		this.tenderPostDate = tenderPostDate;
+	public void setContactEmail(String contactEmail) {
+		this.contactEmail = contactEmail;
 	}
 
-	public Date getTenderDeadline() {
-		return tenderDeadline;
+	public String getContactPerson() {
+		return contactPerson;
 	}
 
-	public void setTenderDeadline(Date tenderDeadline) {
-		this.tenderDeadline = tenderDeadline;
+	public void setContactPerson(String contactPerson) {
+		this.contactPerson = contactPerson;
 	}
 
-	public String getTenderOrganization() {
-		return tenderOrganization;
+	public Phone getPhone() {
+		return phone;
 	}
 
-	public void setTenderOrganization(String tenderOrganization) {
-		this.tenderOrganization = tenderOrganization;
+	public void setPhone(Phone phone) {
+		this.phone = phone;
 	}
 
-	public MultipartFile getTenderDocument() {
-		return tenderDocument;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setTenderDocument(MultipartFile tenderDocument) {
-		this.tenderDocument = tenderDocument;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
-	public Blob getImagebytes() {
-		return imagebytes;
+	public Date getPostDate() {
+		return postDate;
 	}
 
-	public void setImagebytes(Blob imagebytes) {
-		this.imagebytes = imagebytes;
+	public void setPostDate(Date postDate) {
+		this.postDate = postDate;
 	}
 
-   
+	public Date getDeadline() {
+		return deadline;
+	}
 
-	
+	public void setDeadline(Date deadline) {
+		this.deadline = deadline;
+	}
 
-} // The End of Class;
+	public String getAgency() {
+		return agency;
+	}
+
+	public void setAgency(String agency) {
+		this.agency = agency;
+	}
+
+	public MultipartFile getTenderMultipart() {
+		return tenderMultipart;
+	}
+
+	public void setTenderMultipart(MultipartFile tenderMultipart) {
+		this.tenderMultipart = tenderMultipart;
+	}
+
+	public String getAttachmentFileName() {
+		return attachmentFileName;
+	}
+
+	public void setAttachmentFileName(String attachmentFileName) {
+		this.attachmentFileName = attachmentFileName;
+	}
+
+}

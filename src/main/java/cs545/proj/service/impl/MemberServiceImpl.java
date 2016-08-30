@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cs545.proj.domain.Member;
 import cs545.proj.repository.MemberRepository;
-import cs545.proj.service.CredentialsService;
 import cs545.proj.service.MemberService;
 
 @Service
@@ -19,15 +18,7 @@ public class MemberServiceImpl implements cs545.proj.service.MemberService {
  	@Autowired
 	private MemberRepository memberRepository;
 
- 	@Autowired
- 	CredentialsService credentialsService;
 
-  	@PreAuthorize("hasRole('ROLE_ADMIN')")
-  	public void saveFull( Member member) {  		
-  		credentialsService.save(member.getCredentials());
-  		memberRepository.save(member);
-	}
-  	
   	@PreAuthorize("hasRole('ROLE_ADMIN')")
   	public void save( Member member) {  		
   		memberRepository.save(member);
@@ -39,7 +30,14 @@ public class MemberServiceImpl implements cs545.proj.service.MemberService {
 	}
 
 	public Member findByMemberNumber(int memberId) {
-		return memberRepository.findByMemberNumber(memberId);
+		return null;
+	}
+
+
+	@Override
+	public void saveFull(Member member) {
+		// TODO Auto-generated method stub
+		
 	}
  
 

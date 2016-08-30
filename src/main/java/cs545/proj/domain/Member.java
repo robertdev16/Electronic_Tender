@@ -1,80 +1,91 @@
 package cs545.proj.domain;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 
-@Entity(name = "MEMBER") 
-public class Member {
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.multipart.MultipartFile;
+
+@Entity
+public class Member implements Serializable {
+
+	private static final long serialVersionUID = 642352635709059620L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID")
 	private int id;
 	
-	@Column(name="FIRSTNAME")
-	private String firstName;
-	@Column(name="LASTNAME")
-	private String lastName;
-	@Column(name="AGE")
-	private int age;
-	@Column(name="TITLE")
-	private String title;
-	@Column(name="MEMBERNUMBER")
-	private int memberNumber;
+	@Valid
+	@OneToOne(cascade=CascadeType.ALL)
+	private User user;
 	
-	@OneToOne(fetch=FetchType.LAZY) 
-	@JoinColumn(name="USERNAME") 
-	private Credentials credentials;
+	@NotBlank
+	private String organizationName;
+	
+    @Transient
+    private MultipartFile licenceMultipart;
+    
+    @NotBlank
+    private String licenceFileName;
+	
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<Catagory> selectedCatagory;
 
- 	public int getId() {
+	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getFirstName() {
-		return firstName;
+
+	public User getUser() {
+		return user;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public String getLastName() {
-		return lastName;
+
+	public String getOrganizationName() {
+		return organizationName;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+
+	public void setOrganizationName(String organizationName) {
+		this.organizationName = organizationName;
 	}
-	public int getAge() {
-		return age;
+
+	public MultipartFile getLicenceMultipart() {
+		return licenceMultipart;
 	}
-	public void setAge(int age) {
-		this.age = age;
+
+	public void setLicenceMultipart(MultipartFile licenceMultipart) {
+		this.licenceMultipart = licenceMultipart;
 	}
- 	public String getTitle() {
-		return title;
+
+	public String getLicenceFileName() {
+		return licenceFileName;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+
+	public void setLicenceFileName(String licenceFileName) {
+		this.licenceFileName = licenceFileName;
 	}
-	public int getMemberNumber() {
-		return memberNumber;
+
+	public List<Catagory> getSelectedCatagory() {
+		return selectedCatagory;
 	}
-	public void setMemberNumber(int memberNumber) {
-		this.memberNumber = memberNumber;
+
+	public void setSelectedCatagory(List<Catagory> selectedCatagory) {
+		this.selectedCatagory = selectedCatagory;
 	}
-	public Credentials getCredentials() {
-		return credentials;
-	}
-	public void setCredentials(Credentials credentials) {
-		this.credentials = credentials;
-	}
- 
 }

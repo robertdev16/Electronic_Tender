@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import cs545.proj.domain.Member;
 
 	@Repository
-	public interface MemberRepository extends  CrudRepository<Member, String> 
+	public interface MemberRepository extends  CrudRepository<Member, Integer> 
 	{
-		public Member findByMemberNumber(int memberNumber);
+		
  	}
 
