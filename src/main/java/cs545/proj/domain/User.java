@@ -63,23 +63,12 @@ public class User implements Serializable {
     @OneToOne(cascade=CascadeType.ALL)
     private Address address;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    private List<Tender> publishedTenders;
-    
 	public Set<UserRole> getRoleSet() {
 		return roleSet;
 	}
 
 	public void setRoleSet(Set<UserRole> roleSet) {
 		this.roleSet = roleSet;
-	}
-
-	public List<Tender> getPublishedTenders() {
-		return publishedTenders;
-	}
-
-	public void setPublishedTenders(List<Tender> publishedTenders) {
-		this.publishedTenders = publishedTenders;
 	}
 
 	public int getId() {

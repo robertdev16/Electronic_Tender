@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,8 +36,11 @@ public class Tender implements Serializable {
 
 	@NotBlank
 	private String title;
+	
+	@ManyToOne
+	private User publishUser;
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "tenderList")
 	private List<Catagory> categoryList;
 	
 	@NotBlank
@@ -57,12 +61,11 @@ public class Tender implements Serializable {
     @OneToOne(cascade=CascadeType.ALL)
     private Address address;
 	
-    @DateTimeFormat(pattern = "MM-dd-yyyy")
     @Temporal(TemporalType.TIMESTAMP)
 	private Date postDate;
     
     @DateTimeFormat(pattern = "MM-dd-yyyy")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
 	private Date deadline;
 
     @NotBlank
@@ -96,6 +99,14 @@ public class Tender implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public User getPublishUser() {
+		return publishUser;
+	}
+
+	public void setPublishUser(User publishUser) {
+		this.publishUser = publishUser;
 	}
 
 	public List<Catagory> getCategoryList() {

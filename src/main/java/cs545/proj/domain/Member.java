@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.Valid;
@@ -38,8 +38,8 @@ public class Member implements Serializable {
     @NotBlank
     private String licenceFileName;
 	
-    @OneToMany(cascade=CascadeType.ALL)
-    private List<Catagory> selectedCatagory;
+    @ManyToMany(mappedBy = "subscribedMembers")
+    private List<Catagory> selectedCatagories;
 
 	public int getId() {
 		return id;
@@ -81,11 +81,12 @@ public class Member implements Serializable {
 		this.licenceFileName = licenceFileName;
 	}
 
-	public List<Catagory> getSelectedCatagory() {
-		return selectedCatagory;
+	public List<Catagory> getSelectedCatagories() {
+		return selectedCatagories;
 	}
 
-	public void setSelectedCatagory(List<Catagory> selectedCatagory) {
-		this.selectedCatagory = selectedCatagory;
+	public void setSelectedCatagories(List<Catagory> selectedCatagories) {
+		this.selectedCatagories = selectedCatagories;
 	}
+
 }

@@ -26,6 +26,8 @@ public class Catagory {
 	@ManyToMany
 	private List<Tender> tenderList;
 
+	@ManyToMany
+    private List<Member> subscribedMembers;
 
 
 	public int getId() {
