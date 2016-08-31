@@ -42,7 +42,7 @@
         <td>${member.address.street}, ${member.address.streetName},${member.address.city}, ${member.address.state}</td>
         
         <!-- Spring:url for handling Spring template/@PathVariable -->
-        <spring:url value="/member_edit/{id}"  var="edit" >
+        <spring:url value="/memberEdit/{id}"  var="edit" >
    				<spring:param name="id" value="${member.id}" />
  		</spring:url>
          
