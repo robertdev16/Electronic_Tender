@@ -20,14 +20,12 @@ public class MaxUploadSizeInterceptor extends HandlerInterceptorAdapter {
             ServletRequestContext ctx = new ServletRequestContext(request);
             long requestSize = ctx.contentLength();
             if (requestSize > maxSize) {
+            	request.getSession().setAttribute("requestSize", requestSize);
                 throw new MaxUploadSizeExceededException(maxSize);
             }
         }
-		
 		return true;
-		
 	}
-
 
 	public void setMaxSize(long maxSize) {
 		this.maxSize = maxSize;

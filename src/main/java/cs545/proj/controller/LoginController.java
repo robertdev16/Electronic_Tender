@@ -10,7 +10,7 @@ public class LoginController {
 
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String login() {
- 		return "login";
+ 		return "loginPageTile";
 	}
  
 	@RequestMapping(value="/loginfailed", method = RequestMethod.GET)

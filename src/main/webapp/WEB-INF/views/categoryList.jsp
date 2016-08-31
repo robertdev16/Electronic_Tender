@@ -10,10 +10,10 @@
 		<th>Business Area</th>
 	</tr>
 
-	<c:forEach items="${catagories}" var="catagory">
+	<c:forEach items="${categories}" var="category">
 		<tr>
 			<td><a
-				href="<spring:ur value="/tender/viewCatagories/${catagory.id}" />">
+				href="<spring:ur value="/tender/viewCategories/${category.id}" />">
 			</a></td>
 		</tr>
 	</c:forEach>

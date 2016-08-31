@@ -127,7 +127,6 @@ body {
 #centerDiv {
 	display: table-cell;
 	vertical-align: top;
-	text-align: center;
 	height: 400px;
 }
 
