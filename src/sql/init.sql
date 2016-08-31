@@ -9,3 +9,9 @@ INSERT INTO user_roleset (User_id, roleSet) VALUES (2, 'ROLE_EMPLOYEE');
 INSERT INTO user_roleset (User_id, roleSet) VALUES (3, 'ROLE_MEMBER');
 INSERT INTO user_roleset (User_id, roleSet) VALUES (4, 'ROLE_ORGANIZATION');
 INSERT INTO user_roleset (User_id, roleSet) VALUES (5, 'ROLE_EMPLOYEE');
+
+INSERT INTO category (name, description) VALUES ('Construction', 'About construction and related machinery, building materials supplies');
+INSERT INTO category (name, description) VALUES ('Education & Training', 'About education and training related areas');
+INSERT INTO category (name, description) VALUES ('Computer & Accessories', 'About computer, accessories, electrical and electronic supplies');
+INSERT INTO category (name, description) VALUES ('Industrial Supplies', 'About industrial materials and related supplies');
+INSERT INTO category (name, description) VALUES ('Food & Beverage', 'About food and beverage areas');

@@ -6,7 +6,9 @@ import cs545.proj.domain.Member;
  
 public interface MemberService {
 
-
-	public Member findByMemberNumber(int memberId);
-  	public void saveFull( Member member);  		
+	public Member getMemberByUsername(String username);
+	
+	public List<Member> listAllVerificationRequestMembers();
+	
+	public Member saveOrUpdate(Member member);
 }

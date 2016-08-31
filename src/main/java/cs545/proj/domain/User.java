@@ -2,7 +2,6 @@ package cs545.proj.domain;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,21 +12,17 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 
 @Entity
 public class User implements Serializable {
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = -4521979847259295479L;
 
 	@Id
@@ -38,7 +33,7 @@ public class User implements Serializable {
     private String username;
     
     @NotBlank
-    @Length(min=6, message="Password should be more than 5 charactes")
+    @Min(6)
     private String password;
     
     @Enumerated(EnumType.STRING)

@@ -1,5 +1,6 @@
 package cs545.proj.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,8 +12,10 @@ import javax.persistence.ManyToMany;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-public class Catagory {
-	
+public class Category implements Serializable {
+
+	private static final long serialVersionUID = 5465884713810745242L;
+
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
@@ -61,5 +64,13 @@ public class Catagory {
 	public void setTenderList(List<Tender> tenderList) {
 		this.tenderList = tenderList;
 	}
-	
+
+	public List<Member> getSubscribedMembers() {
+		return subscribedMembers;
+	}
+
+	public void setSubscribedMembers(List<Member> subscribedMembers) {
+		this.subscribedMembers = subscribedMembers;
+	}
+
 }

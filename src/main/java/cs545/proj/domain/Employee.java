@@ -19,9 +19,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Employee implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 642352635709059620L;
 
 	@Id

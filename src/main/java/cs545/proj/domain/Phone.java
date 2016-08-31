@@ -1,4 +1,3 @@
-
 package cs545.proj.domain;
 
 import java.io.Serializable;
@@ -7,10 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.Digits;
 
-import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Phone implements Serializable {
@@ -21,14 +19,17 @@ public class Phone implements Serializable {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
 	
-	@Range(min = 100, max = 999)
-  	private int area;
+	@Length(min=3, max=3)
+	@Digits(fraction = 0, integer = 3)
+	private String area;
 	
-	@Range(min = 100, max = 999)
-	private int prefix;
- 	
-	@Range(min = 1000, max = 9999)
-	private int number;
+	@Length(min=3, max=3)
+	@Digits(fraction = 0, integer = 3)
+	private String prefix;
+	
+	@Length(min=4, max=4)
+	@Digits(fraction = 0, integer = 4)
+	private String number;
 
 	public int getId() {
 		return id;
@@ -38,27 +39,28 @@ public class Phone implements Serializable {
 		this.id = id;
 	}
 
-	public int getArea() {
+	public String getArea() {
 		return area;
 	}
 
-	public void setArea(int area) {
+	public void setArea(String area) {
 		this.area = area;
 	}
 
- 	public int getNumber() {
-		return number;
-	}
-
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
-	public int getPrefix() {
+	public String getPrefix() {
 		return prefix;
 	}
 
-	public void setPrefix(int prefix) {
+	public void setPrefix(String prefix) {
 		this.prefix = prefix;
 	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
 }

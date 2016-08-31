@@ -10,15 +10,12 @@ import javax.persistence.Id;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
 public class Address implements Serializable{
 
-
     private static final long serialVersionUID = 989191150380037359L;
-
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -39,7 +36,7 @@ public class Address implements Serializable{
     private String country;
     
     @NotBlank
-    @Pattern(regexp="^\\d{5}(-\\d{4})?$",message="{Pattern.zipcode}")
+    @Pattern(regexp="^\\d{5}(-\\d{4})?$", message="{Pattern.zipcode}")
     private String zipCode;
 
    

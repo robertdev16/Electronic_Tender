@@ -11,6 +11,7 @@ body {
 }
 
 #topBanner {
+	background-color: #EEEEEE;
 	padding-bottom: 50px;
 }
 
@@ -39,10 +40,11 @@ body {
 #navi ul li a:hover,
 #navi ul li a:focus {
   text-decoration: none;
-  background-color: #eee;
+  background-color: #CCCCCC;
 }
 
 #header {
+	background-color: #80ffff;
 	text-align: center;
 	clear: both;
 }
@@ -52,6 +54,7 @@ body {
 }
 
 #centerDiv {
+	background-color: #eeeeee;
 	text-align: center;
 	display: inline-block;
 	float: left;
@@ -59,11 +62,13 @@ body {
 }
 
 #rightDiv {
+	background-color: #ffff80;
 	display: inline-block;
 	float: right;
 }
 
 #footer {
+	background-color: #ff80c0;
 	text-align: center;
 	font-size: 1.2em;
 	font-weight: bold;

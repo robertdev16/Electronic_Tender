@@ -22,24 +22,23 @@ public class Member implements Serializable {
 	private static final long serialVersionUID = 642352635709059620L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	@Valid
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
-	
+
 	@NotBlank
 	private String organizationName;
-	
-    @Transient
-    private MultipartFile licenceMultipart;
-    
-    @NotBlank
-    private String licenceFileName;
-	
-    @ManyToMany(mappedBy = "subscribedMembers")
-    private List<Catagory> selectedCatagories;
+
+	@Transient
+	private MultipartFile licenceMultipart;
+
+	private String licenceFileName="";
+
+	@ManyToMany(mappedBy = "subscribedMembers")
+	private List<Category> selectedCategories;
 
 	public int getId() {
 		return id;
@@ -81,12 +80,12 @@ public class Member implements Serializable {
 		this.licenceFileName = licenceFileName;
 	}
 
-	public List<Catagory> getSelectedCatagories() {
-		return selectedCatagories;
+	public List<Category> getSelectedCategories() {
+		return selectedCategories;
 	}
 
-	public void setSelectedCatagories(List<Catagory> selectedCatagories) {
-		this.selectedCatagories = selectedCatagories;
+	public void setSelectedCategories(List<Category> selectedCategories) {
+		this.selectedCategories = selectedCategories;
 	}
 
 }

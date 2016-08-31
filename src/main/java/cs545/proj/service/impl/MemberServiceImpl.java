@@ -3,7 +3,6 @@ package cs545.proj.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,33 +11,26 @@ import cs545.proj.repository.MemberRepository;
 import cs545.proj.service.MemberService;
 
 @Service
-@Transactional 
-public class MemberServiceImpl implements cs545.proj.service.MemberService {
+@Transactional
+public class MemberServiceImpl implements MemberService {
 	
  	@Autowired
 	private MemberRepository memberRepository;
 
-
-  	@PreAuthorize("hasRole('ROLE_ADMIN')")
-  	public void save( Member member) {  		
-  		memberRepository.save(member);
- 	}
-  	
-  	
-	public List<Member> findAll() {
-		return (List< Member>)memberRepository.findAll();
+	@Override
+	public Member getMemberByUsername(String username) {
+		List<Member> memberList = memberRepository.findByUser_Username(username);
+		return (memberList.isEmpty() || memberList == null) ? null : memberList.get(0);
 	}
-
-	public Member findByMemberNumber(int memberId) {
-		return null;
-	}
-
 
 	@Override
-	public void saveFull(Member member) {
-		// TODO Auto-generated method stub
-		
+	public List<Member> listAllVerificationRequestMembers() {
+		return memberRepository.listAllVerificationRequestMembers();
 	}
- 
+
+	@Override
+	public Member saveOrUpdate(Member member) {
+		return memberRepository.saveAndFlush(member);
+	}
 
 }

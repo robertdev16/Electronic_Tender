@@ -41,7 +41,7 @@ public class Tender implements Serializable {
 	private User publishUser;
 
 	@ManyToMany(mappedBy = "tenderList")
-	private List<Catagory> categoryList;
+	private List<Category> categoryList;
 	
 	@NotBlank
 	private String description;
@@ -73,9 +73,8 @@ public class Tender implements Serializable {
 
 	@Transient
     private MultipartFile tenderMultipart;
-    
-    @NotBlank
-    private String attachmentFileName;
+
+    private String attachmentFileName="";
 
 	public int getId() {
 		return id;
@@ -109,11 +108,11 @@ public class Tender implements Serializable {
 		this.publishUser = publishUser;
 	}
 
-	public List<Catagory> getCategoryList() {
+	public List<Category> getCategoryList() {
 		return categoryList;
 	}
 
-	public void setCategoryList(List<Catagory> categoryList) {
+	public void setCategoryList(List<Category> categoryList) {
 		this.categoryList = categoryList;
 	}
 
