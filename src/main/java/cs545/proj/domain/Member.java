@@ -87,5 +87,15 @@ public class Member implements Serializable {
 	public void setSelectedCategories(List<Category> selectedCategories) {
 		this.selectedCategories = selectedCategories;
 	}
+	
+	public void addCategory(Category category) {
+		this.selectedCategories.add(category);
+		category.addMember(this);
+	}
+	
+	public void removeCategory(Category category) {
+		category.removeMember(this);
+		this.selectedCategories.remove(category);
+	}
 
 }

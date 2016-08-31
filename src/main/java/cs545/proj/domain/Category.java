@@ -72,5 +72,25 @@ public class Category implements Serializable {
 	public void setSubscribedMembers(List<Member> subscribedMembers) {
 		this.subscribedMembers = subscribedMembers;
 	}
+	
+	public void addTender(Tender tender) {
+		this.tenderList.add(tender);
+		tender.addCategory(this);
+	}
+	
+	public void removeTender(Tender tender) {
+		tender.removeCategory(this);
+		this.tenderList.remove(tender);
+	}
+	
+	public void addMember(Member member) {
+		this.subscribedMembers.add(member);
+		member.addCategory(this);
+	}
+	
+	public void removeMember(Member member) {
+		member.removeCategory(this);
+		this.subscribedMembers.remove(member);
+	}
 
 }

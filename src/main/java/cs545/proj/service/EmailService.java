@@ -8,6 +8,6 @@ public interface EmailService {
 
 	public Set<String> getAllEmailsNeedInformedByTender(Tender tender);
 	
-	public int informMembersByEmail(Set<String> emailSet);
+	public int informMembersByEmail(Set<String> emailSet, String title);
 
 }

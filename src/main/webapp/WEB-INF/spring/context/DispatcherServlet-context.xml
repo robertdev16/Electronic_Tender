@@ -64,7 +64,7 @@
 			<property name="paramName" value="language" />
 		</bean>
 		<mvc:interceptor>
-			<mvc:mapping path="/upload" />
+			<mvc:mapping path="/upload/**" />
 			<bean class="cs545.proj.interceptor.MaxUploadSizeInterceptor">
 				<property name="maxSize" value="5120000" />
 			</bean>

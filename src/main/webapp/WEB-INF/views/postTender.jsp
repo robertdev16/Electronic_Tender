@@ -116,7 +116,7 @@
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="condition"><spring:message code="addProduct.form.condition.label"/></label>
 					<div class="col-lg-10">
-						<form:checkboxes items="${catagories}" path="favFramework" />
+						<form:checkboxes items="${categories}" path="favFramework" />
 					</div>
 				</div>
 				

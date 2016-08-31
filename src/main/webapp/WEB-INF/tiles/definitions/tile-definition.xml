@@ -14,9 +14,30 @@
 		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
 	</definition>
 
- 	<definition name="home" extends="baseLayout">
+	<definition name="errorTile" extends="baseLayout">
+ 		<put-attribute name="center" value="/WEB-INF/views/errorPage.jsp" />
+	</definition>
+
+ 	<definition name="homeTile" extends="baseLayout">
+ 		<put-attribute name="navigation" value="/WEB-INF/tiles/template/navigationHome.jsp" />
  		<put-attribute name="center" value="/WEB-INF/views/welcome.jsp" />
  		<put-attribute name="right" value="/WEB-INF/views/loginForm.jsp" />
 	</definition>
 	
+	<definition name="loginPageTile" extends="baseLayout">
+ 		<put-attribute name="center" value="/WEB-INF/views/loginForm.jsp" />
+	</definition>
+	
+	<definition name="tenderListTile" extends="baseLayout">
+		<put-attribute name="left" value="/WEB-INF/views/categoryList.jsp" />
+ 		<put-attribute name="center" value="/WEB-INF/views/tenderList.jsp" />
+	</definition>
+	
+	<definition name="tenderTile" extends="baseLayout">
+ 		<put-attribute name="center" value="/WEB-INF/views/tenderDetail.jsp" />
+	</definition>
+	
+	<definition name="postTenderTile" extends="baseLayout">
+ 		<put-attribute name="center" value="/WEB-INF/views/postTender.jsp" />
+	</definition>
 </tiles-definitions>

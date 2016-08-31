@@ -12,43 +12,37 @@
 
 <title><tiles:insertAttribute name="title" /></title>
 
-<link href="<spring:url value='/resources/css/main.css' />" type="text/css" rel="stylesheet" />
+<link href="<spring:url value='/resources/css/main.css' />"
+	type="text/css" rel="stylesheet" />
 
 </head>
 
 <body>
-	<div id="main">
+	<div id="mainDiv">
 		<div id="topBanner">
 			<div id="logoImg">
-				<h1>Electronic Tender</h1>
+				<img src="<spring:url value='/resources/images/mainlogo.png' />" width="210" alt="Main Logo Image"/>
 			</div>
-			<div id="navi">
-				<ul>
-					<tiles:insertAttribute name="navigation" />
-				</ul>
+			<div id="naviDiv">
+				<tiles:insertAttribute name="navigation" />
 			</div>
 		</div>
 
-		<div id="header">
+		<div id="headerDiv">
 			<tiles:insertAttribute name="header" />
 		</div>
 
-		<div id="leftDiv">
+		<div id="contentDiv">
 			<tiles:insertAttribute name="left" />
-		</div>
-
-		<div id="centerDiv">
+			
 			<tiles:insertAttribute name="center" />
-		</div>
 
-		<div id="rightDiv">
 			<tiles:insertAttribute name="right" />
 		</div>
 
-		<div id="footer">
+		<div id="footerDiv">
 			<tiles:insertAttribute name="footer" />
 		</div>
-
 	</div>
 </body>
 </html>

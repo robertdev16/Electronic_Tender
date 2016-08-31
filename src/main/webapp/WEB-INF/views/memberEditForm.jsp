@@ -10,17 +10,7 @@
 <body>
 <spring:url var = "editBook" value="/editBook" />
 
-<!--  <div id="rightList"> 
-	<form:form modelAttribute="bookSearch"  action= "${editBook}"   method="post">
-  <p>
-            	<label for="bookList"><spring:message code="book.book" /> </label>
-             	<form:select id="booklist" path="id" 
-                	items="${books}" itemLabel="title" itemValue="id"/>
-  
-             <input id="submit" type="submit" value="Edit Book">
-</p>
-    </form:form >
-</div>-->
+
 
 <spring:url var = "member_update" value="/member_update" />
 

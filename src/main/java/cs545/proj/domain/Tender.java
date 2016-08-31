@@ -195,5 +195,15 @@ public class Tender implements Serializable {
 	public void setAttachmentFileName(String attachmentFileName) {
 		this.attachmentFileName = attachmentFileName;
 	}
+	
+	public void addCategory(Category category) {
+		this.categoryList.add(category);
+		category.addTender(this);
+	}
+	
+	public void removeCategory(Category category) {
+		category.removeTender(this);
+		this.categoryList.remove(category);
+	}
 
 }

@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Tenders</title>
 </head>
 <body>
  	<section class="container">  
@@ -16,8 +15,8 @@
 							<h3>${tender.refId}</h3>
 							<a href=" <spring:url value="/tenders/tender?id=${tender.id}"/>">${tender.title}</a>
 							
-							<p>Category: <c:forEach items="${catagories}" var="catagory">
-							             $(catagory.name);
+							<p>Category: <c:forEach items="${categories}" var="category">
+							             $(category.name);
 							             </c:forEach>
 							</p>							
 							<p>Posted: ${tender.postDate}</p>
