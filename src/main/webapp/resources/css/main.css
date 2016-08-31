@@ -2,75 +2,150 @@
 
 body {
 	font-family: Arial;
+	margin: 0;
+	padding: 0;
 }
 
-#main {
-	width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+#mainDiv {
+	max-width: 1000px;
+	min-width: 800px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #topBanner {
-	background-color: #EEEEEE;
-	padding-bottom: 50px;
+	display: table;
+	width: 100%;
+	padding: 0;
+	margin: 0;
 }
 
 #logoImg {
+	display: table-cell;
+	text-align: left;
+	vertical-align: middle;
+}
+
+#naviDiv {
+	display: table-cell;
+	text-align: right;
+	vertical-align: middle;
+}
+
+#naviDiv ul {
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+
+#naviDiv ul li {
+	position: relative;
 	display: inline-block;
-	float: left;
+	color: #0078D7;
 }
 
-#navi {
-	display: inline-block;
-	float: right;
+#naviDiv ul li a {
+	padding: 10px 15px;
 }
 
-#navi ul {
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-}
-#navi ul li {
-  position: relative;
-  display: inline-block;
-}
-#navi ul li a {
-  padding: 10px 15px;
-}
-#navi ul li a:hover,
-#navi ul li a:focus {
-  text-decoration: none;
-  background-color: #CCCCCC;
+#naviDiv ul li a:hover, #naviDiv ul li a:focus {
+	text-decoration: none;
+	color: #FFFFFF;
+	background-color: #0078D7;
 }
 
-#header {
-	background-color: #80ffff;
-	text-align: center;
-	clear: both;
+#naviLogin {
+	color: #FFFFFF;
+	background-color: #0078D7;
+}
+
+#naviLogin a {
+	color: #FFFFFF;
+	background-color: #0078D7;
+	text-decoration: none;
+}
+
+#naviLogin:hover, #naviLogin:focus {
+	opacity: 0.75;
+}
+
+#headerDiv {
+	display: table;
+	width: 100%;
+	color: #FFFFFF;
+	background-color: #0078D7;
+}
+
+#headerCellLeft {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: left;
+	line-height: 50px;
+	padding-left: 10px;
+}
+
+#headerCellSpan01 {
+	font-weight: bold;
+	font-style: italic;
+	font-size: 1.3em;
+}
+
+#headerCellSpan02 {
+	font-size: 1.1em;
+}
+
+#headerCellRight {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: right;
+	padding-right: 10px;
+}
+
+#viewProfileSpan {
+	font-weight: bold;
+	color: #FFFF00;
+}
+
+#viewProfileSpan a {
+	color: #FFFF00;
+}
+
+#contentDiv {
+	display: table;
+	width: 100%;
 }
 
 #leftDiv {
-	display: inline-block;
+	width: 220px;
+	display: table-cell;
+	vertical-align: top;
+	background-color: #eeeeee;
+	text-align: center;
 }
 
 #centerDiv {
-	background-color: #eeeeee;
+	display: table-cell;
+	vertical-align: top;
 	text-align: center;
-	display: inline-block;
-	float: left;
-	height: 300px;
+	height: 400px;
 }
 
 #rightDiv {
-	background-color: #ffff80;
-	display: inline-block;
-	float: right;
+	width: 220px;
+	display: table-cell;
+	vertical-align: top;
+	background-color: #eeeeee;
+	text-align: center;
 }
 
-#footer {
-	background-color: #ff80c0;
+#footerDiv {
+	color: #FFFFFF;
+	background-color: #0078D7;
 	text-align: center;
-	font-size: 1.2em;
-	font-weight: bold;
-	clear: both;
+	padding: 5px;
+}
+
+#footerDiv a {
+	color: #FFFF00;
 }

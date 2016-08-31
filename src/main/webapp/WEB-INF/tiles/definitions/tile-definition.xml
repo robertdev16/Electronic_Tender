@@ -15,8 +15,12 @@
 	</definition>
 
  	<definition name="home" extends="baseLayout">
+ 		<put-attribute name="navigation" value="/WEB-INF/tiles/template/navigationHome.jsp" />
  		<put-attribute name="center" value="/WEB-INF/views/welcome.jsp" />
  		<put-attribute name="right" value="/WEB-INF/views/loginForm.jsp" />
 	</definition>
 	
+	<definition name="loginPage" extends="baseLayout">
+ 		<put-attribute name="center" value="/WEB-INF/views/loginForm.jsp" />
+	</definition>
 </tiles-definitions>
