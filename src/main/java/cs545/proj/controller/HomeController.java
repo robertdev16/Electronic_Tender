@@ -21,12 +21,12 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping("/tenders")
-	public String tenders(Model model) {
-		
-		model.addAttribute("greeting", "Welcome to Tender List");
-		return "home";
-	}
+//	@RequestMapping("/tenders")
+//	public String tenders(Model model) {
+//		
+//		model.addAttribute("greeting", "Welcome to Tender List");
+//		return "home";
+//	}
 	
 	@RequestMapping({"/subscribe"})
 	public String subscribe(Model model) {
