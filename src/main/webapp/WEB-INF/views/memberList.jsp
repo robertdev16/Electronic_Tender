@@ -50,48 +50,8 @@
     </tr>
 </c:forEach>
 </table>
- 
-  <!--  <input type="button" value="Add Category" onclick="make_visible('formInput');return false;">-->
 
 </div>
- 
- 		<!-- Success - or Validation errors 
-    	<div id="result" style="display:none" >   	
-    	    <p id="success" > 
-    
-    		</p> 
-    		<p id="errors" > 
-    
-    		</p>
-    	</div>
- 
-   	<div id="formInput" style="display:none" > 
-
-	<h3 align="center">Category</h3>
-
-	
-	<form id="categoryForm" method="post">
-
-			<input type="hidden" name="id" value="0">
-          
-          <p>
-            <label for="name"> Name    : </label>
-             <input type="text" name="name" id="name" value="" />
-        </p>
- 
-         <p>
-            <label for="description"> Description: </label>
-            <input id="description" name="description" type="text"/>
-        </p>
- 
-             <input type="button" value="Add Category" onclick="categorySubmit() ">
-    
-    </form>
-  <h4 align="center"> 
-     <a href="#" onclick="make_hidden('formInput'); make_hidden('result');resetForm('categoryForm');"> <b>EXIT</b> </a> 
-  </h4>
-
-</div>-->
  
 </body>
 </html>
