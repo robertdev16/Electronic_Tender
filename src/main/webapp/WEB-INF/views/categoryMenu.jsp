@@ -1,22 +1,20 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <%@ include file="/WEB-INF/views/template/header.jsp" %>
-<%@ taglib prefix="imgtag" uri="/WEB-INF/tlds/img_tag" %> --%>
 
 
+
+<div id="leftDiv">
 <table>
 	<tr>
 		<th>Business Area</th>
 	</tr>
 
-	<c:forEach items="${catagories}" var="catagory">
+	<c:forEach items="${categories}" var="category">
 		<tr>
-			<td><a
-				href="<spring:ur value="/tender/viewCatagories/${catagory.id}" />">
+			<td><a href="<spring:url value='/tender/byCategory/${category.id}' />">
+			${category.name}
 			</a></td>
 		</tr>
 	</c:forEach>
 </table>
-<%-- 
-<%@ include file="/WEB-INF/views/template/footer.jsp" %> --%>
+</div>

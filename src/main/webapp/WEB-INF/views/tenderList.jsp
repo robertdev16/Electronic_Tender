@@ -7,13 +7,11 @@
 
 </head>
 <body>
- 	<section class="container">  
-                       
 		<div class="row">
 			<c:forEach items="${tenders}" var="tender">
 						<div class="caption">
 							<h3>${tender.refId}</h3>
-							<a href=" <spring:url value="/tenders/tender?id=${tender.id}"/>">${tender.title}</a>
+							<a href=" <spring:url value="/tender/detail/${tender.id}"/>">${tender.title}</a>
 							
 							<p>Category: <c:forEach items="${categories}" var="category">
 							             $(category.name);
@@ -41,6 +39,5 @@
 						</div>
 			</c:forEach>
 		</div>
-	</section>
 </body>
 </html>

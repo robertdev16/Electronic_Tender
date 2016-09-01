@@ -45,7 +45,7 @@ public class CategoryController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String getEditCatalogForm(@PathVariable("id") int id, Model model) {
 		Category category = categoryService.getCategoryById(id);
-		model.addAttribute("catagory", category );
+		model.addAttribute("category", category );
 		   return "editCategory";
 		}
 	

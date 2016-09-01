@@ -28,7 +28,7 @@ public class MemberController {
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String listMembers(Model model) {
 		model.addAttribute("members", memberService.listAllMembers());
-		return "memberList";
+		return "memberListTile";
 	}
 	
   	@RequestMapping(value = "/detail/{memberId}", method = RequestMethod.GET)

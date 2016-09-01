@@ -122,12 +122,15 @@ body {
 	vertical-align: top;
 	background-color: #eeeeee;
 	text-align: center;
+	padding: 5px;
+	height: 450px;
 }
 
 #centerDiv {
 	display: table-cell;
 	vertical-align: top;
-	height: 400px;
+	padding: 5px;
+	height: 450px;
 }
 
 #rightDiv {
@@ -136,6 +139,8 @@ body {
 	vertical-align: top;
 	background-color: #eeeeee;
 	text-align: center;
+	padding: 5px;
+	height: 450px;
 }
 
 #footerDiv {

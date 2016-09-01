@@ -15,7 +15,7 @@ public class LoginController {
  
 	@RequestMapping(value="/loginFailed", method = RequestMethod.GET)
 	public String loginerror(Model model) {
-		model.addAttribute("error", "true");
+		model.addAttribute("loginError", "true");
 		return "loginPageTile";
 	}
  

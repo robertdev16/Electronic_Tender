@@ -1,9 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%-- <%@ include file="/WEB-INF/views/template/header.jsp" %>
 
 
-<div class="container-wrapper">
-    <div class="container"> --%>
         <div class="page-header">
             <h1>Register Member</h1>
 
@@ -83,8 +82,3 @@
         <a href="<c:url value="/" />" >Cancel</a>
 
         </form:form>
-        
-<!-- My -->
-<%-- <script src="<c:url value="/resources/js/registerCustomer.js?v3" /> "></script>
-
-<%@ include file="/WEB-INF/views/template/footer.jsp" %> --%>

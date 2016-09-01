@@ -13,7 +13,7 @@
 
 
 <div id="global">
-<form:form commandName="catagory" action= "${category_update}" >
+<form:form commandName="category" action= "${category_update}" >
     <fieldset>
         <legend>Edit a category</legend>
         <form:hidden path="id"/>
