@@ -1,6 +1,7 @@
 package cs545.proj.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -27,10 +28,10 @@ public class Category implements Serializable {
 	private String description;
 	
 	@ManyToMany
-	private List<Tender> tenderList;
+	private List<Tender> tenderList = new ArrayList<Tender>();
 
 	@ManyToMany
-    private List<Member> subscribedMembers;
+    private List<Member> subscribedMembers = new ArrayList<Member>();
 
 
 	public int getId() {

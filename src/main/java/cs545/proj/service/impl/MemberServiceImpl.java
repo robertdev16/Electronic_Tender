@@ -24,13 +24,23 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<Member> listAllVerificationRequestMembers() {
-		return memberRepository.listAllVerificationRequestMembers();
+	public List<Member> listVerificationRequestMembers() {
+		return memberRepository.listVerificationRequestMembers();
 	}
 
 	@Override
 	public Member saveOrUpdate(Member member) {
 		return memberRepository.saveAndFlush(member);
+	}
+
+	@Override
+	public List<Member> listAllMembers() {
+		return memberRepository.findAll();
+	}
+
+	@Override
+	public Member getMemberById(int memberId) {
+		return memberRepository.getOne(memberId);
 	}
 
 }

@@ -26,40 +26,25 @@ public class MemberController {
 	private MemberService  memberService;
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
-	@PreAuthorize("hasRole('ROLE_ADMIN')") 
 	public String listMembers(Model model) {
-		model.addAttribute("members", memberService.listAllVerificationRequestMembers());
+		model.addAttribute("members", memberService.listAllMembers());
 		return "memberList";
 	}
 	
-  	@RequestMapping(value = "/detail/{username}", method = RequestMethod.GET)
-	public String getMemberUserName(@PathVariable("username") String username,Model model) {
-		Member member = memberService.getMemberByUsername(username);
-		model.addAttribute("member", member);
+  	@RequestMapping(value = "/detail/{memberId}", method = RequestMethod.GET)
+	public String getMemberById(@PathVariable("memberId") int memberId, Model model) {
+		model.addAttribute("member", memberService.getMemberById(memberId));
  		return "memberDetail";
 	}
 
-	@RequestMapping(value = "/edit/{id}",  method = RequestMethod.GET)
-//	@PreAuthorize("hasRole('ROLE_ADMIN')") 
-	public String getEditMemberForm(@PathVariable("id") int id, Model model) {
-//		Member member = memberService.getMemberById(id);
-//		model.addAttribute("member", member);
-		   return "editMember";
-		}
-	
-	@RequestMapping(value="/updateByAdmin" ,method = RequestMethod.POST)
-	@PreAuthorize("hasRole('ROLE_ADMIN')") 
-	public String memberupdateByAdmin(@ModelAttribute("newMember") @Valid Member memberToBeEdited, BindingResult result, HttpServletRequest request) {
-		if(result.hasErrors()) {
-			return "editMember";
-		}
-		memberService.saveOrUpdate(memberToBeEdited);
-	   	return "redirect:/memberList";
+	@RequestMapping(value = "/edit/{memberId}",  method = RequestMethod.GET)
+	public String getEditMemberForm(@PathVariable("memberId") int memberId, Model model) {
+		model.addAttribute("member", memberService.getMemberById(memberId));
+		return "editMember";
 	}
 	
 	@RequestMapping(value="/update" ,method = RequestMethod.POST)
-	@PreAuthorize("hasRole('ROLE_MEMBER')") 
-	public String memberupdate(@ModelAttribute("newMember") @Valid Member memberToBeEdited, BindingResult result, HttpServletRequest request) {
+	public String memberUpdate(@ModelAttribute("newMember") @Valid Member memberToBeEdited, BindingResult result, HttpServletRequest request) {
 		if(result.hasErrors()) {
 			return "editMember";
 		}

@@ -16,17 +16,26 @@
 
 		<security:csrf disabled="true"/>
 		
-		<security:intercept-url pattern="/**" access="hasAnyRole('ROLE_ANONYMOUS', 'ROLE_ADMIN')" />
+		<security:intercept-url pattern="/*" access="hasAnyRole('ROLE_ANONYMOUS', 'ROLE_ORGANIZATION', 'ROLE_MEMBER', 'ROLE_EMPLOYEE', 'ROLE_ADMIN')" />
+		<security:intercept-url pattern="/tender/all" access="hasAnyRole('ROLE_ANONYMOUS', 'ROLE_ORGANIZATION', 'ROLE_MEMBER', 'ROLE_EMPLOYEE', 'ROLE_ADMIN')" />
+		<security:intercept-url pattern="/tender/new" access="hasAnyRole('ROLE_ORGANIZATION', 'ROLE_EMPLOYEE', 'ROLE_ADMIN')" />
+		<security:intercept-url pattern="/tender/**" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ORGANIZATION', 'ROLE_EMPLOYEE', 'ROLE_ADMIN')" />
+		<security:intercept-url pattern="/member/detail/*" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ORGANIZATION', 'ROLE_ADMIN')" />
+		<security:intercept-url pattern="/member/**" access="hasRole('ROLE_ADMIN')" />
+		
+		<security:intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
 
+		<security:form-login login-page="/loginPage"
+			login-processing-url="/doLogin"
+			default-target-url="/home"
+			always-use-default-target="true"
+			authentication-failure-url="/loginFailed"
+			username-parameter="username"
+			password-parameter="password" />
 
-
-		<security:form-login login-page="/login"
-			login-processing-url="/postLogin" username-parameter="username"
-			password-parameter="password" default-target-url="/welcome"
-			always-use-default-target="true" authentication-failure-url="/loginfailed" />
-
-		<security:logout logout-success-url="/logout"
-			delete-cookies="JSESSIONID" logout-url="/doLogout" />
+		<security:logout logout-url="/doLogout"
+			logout-success-url="/logoutSuccess"
+			delete-cookies="JSESSIONID"  />
 
 	</security:http>
 

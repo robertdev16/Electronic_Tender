@@ -3,9 +3,10 @@
 
 
 <div id="rightDiv">
-	<form method="post">
-		Email: <input name="email" type="text" /><br /> Password: <input
-			name="password" type="password" /><br /> <input type="submit"
-			value="Login" />
+	<form action="<spring:url value='/doLogin' />" method="post">
+		Email: <input name="username" type="text" /><br />
+		Password:
+		<input name="password" type="password" /><br />
+		<input type="submit" value="Login" />
 	</form>
 </div>

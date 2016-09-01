@@ -14,7 +14,7 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 
 	public List<Member> findByUser_Username(String username);
 
-	@Query("SELECT m FROM Member m WHERE LENGTH(m.licenceFileName) > 0 AND 'ROLE_MEMBER' IN (m.user.roleSet)")
-	public List<Member> listAllVerificationRequestMembers();
+	@Query("SELECT m FROM Member m WHERE LENGTH(m.licenseFileName) > 0 AND 'ROLE_MEMBER' IN (m.user.roleSet)")
+	public List<Member> listVerificationRequestMembers();
 
 }

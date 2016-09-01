@@ -1,6 +1,7 @@
 package cs545.proj.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,7 +14,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -29,16 +29,15 @@ public class Member implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 
-	@NotBlank
 	private String organizationName;
 
 	@Transient
-	private MultipartFile licenceMultipart;
+	private MultipartFile licenseMultipart;
 
-	private String licenceFileName="";
+	private String licenseFileName="";
 
 	@ManyToMany(mappedBy = "subscribedMembers")
-	private List<Category> selectedCategories;
+	private List<Category> selectedCategories = new ArrayList<Category>();
 
 	public int getId() {
 		return id;
@@ -64,20 +63,20 @@ public class Member implements Serializable {
 		this.organizationName = organizationName;
 	}
 
-	public MultipartFile getLicenceMultipart() {
-		return licenceMultipart;
+	public MultipartFile getLicenseMultipart() {
+		return licenseMultipart;
 	}
 
-	public void setLicenceMultipart(MultipartFile licenceMultipart) {
-		this.licenceMultipart = licenceMultipart;
+	public void setLicenseMultipart(MultipartFile licenseMultipart) {
+		this.licenseMultipart = licenseMultipart;
 	}
 
-	public String getLicenceFileName() {
-		return licenceFileName;
+	public String getLicenseFileName() {
+		return licenseFileName;
 	}
 
-	public void setLicenceFileName(String licenceFileName) {
-		this.licenceFileName = licenceFileName;
+	public void setLicenseFileName(String licenseFileName) {
+		this.licenseFileName = licenseFileName;
 	}
 
 	public List<Category> getSelectedCategories() {

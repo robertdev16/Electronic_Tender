@@ -50,4 +50,9 @@ public class EmailServiceImpl implements EmailService {
 		return memberEmails.length;
 	}
 
+	@Override
+	public int informMembersByTender(Tender tender) {
+		return informMembersByEmail(getAllEmailsNeedInformedByTender(tender), tender.getTitle());
+	}
+
 }

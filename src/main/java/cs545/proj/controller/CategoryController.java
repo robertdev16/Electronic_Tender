@@ -27,6 +27,12 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+	public String listMembers(Model model) {
+		model.addAttribute("categories", categoryService.listAllCategories());
+		return "categoryListTile";
+	}
+    
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody Category saveCategory( @Valid  @RequestBody Category category) {
  
@@ -44,7 +50,6 @@ public class CategoryController {
 		}
 	
 	@RequestMapping(value="/update", method = RequestMethod.POST)
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String categoryupdate(@ModelAttribute("newMember") @Valid Category categoryToBeEdited, BindingResult result, HttpServletRequest request) {
 		if(result.hasErrors()) {
 			return "editCategory";

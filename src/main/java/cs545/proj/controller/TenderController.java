@@ -2,14 +2,11 @@ package cs545.proj.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashMap;
-import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -22,10 +19,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cs545.proj.domain.Category;
 import cs545.proj.domain.Tender;
 import cs545.proj.service.CategoryService;
+import cs545.proj.service.EmailService;
 import cs545.proj.service.TenderService;
 
 @Controller
@@ -37,6 +36,9 @@ public class TenderController {
 
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private EmailService emailService;
 
 	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 
@@ -78,7 +80,7 @@ public class TenderController {
 
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public String processAddNewTenderForm(@Valid @ModelAttribute("newTender") Tender newTender, BindingResult result,
-			HttpSession session) throws IllegalStateException, IOException {
+			HttpSession session, RedirectAttributes redirect) throws IllegalStateException, IOException {
 
 		if (result.hasErrors()) {
 			return "postTenderTile";
@@ -99,11 +101,12 @@ public class TenderController {
 		for (Integer categoryId : newTender.getCheckedCategoryIDs()) {
 			newTender.addCategory(categoryService.getCategoryById(categoryId));
 		}
-		
+
 		Tender savedTender = tenderService.saveOrUpdate(newTender);
+		emailService.informMembersByTender(savedTender);
 
+		redirect.addFlashAttribute("successNew", true);
 		return "redirect:/tender/detail/" + savedTender.getId();
-
 	}
 
 }

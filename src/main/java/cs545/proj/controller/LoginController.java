@@ -8,21 +8,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 
-	@RequestMapping(value="/login", method = RequestMethod.GET)
+	@RequestMapping(value="/loginPage", method = RequestMethod.GET)
 	public String login() {
  		return "loginPageTile";
 	}
  
-	@RequestMapping(value="/loginfailed", method = RequestMethod.GET)
+	@RequestMapping(value="/loginFailed", method = RequestMethod.GET)
 	public String loginerror(Model model) {
- 
 		model.addAttribute("error", "true");
-		return "login";
- 
+		return "loginPageTile";
 	}
  
-	@RequestMapping(value="/logout", method = RequestMethod.GET)
+	@RequestMapping(value="/logoutSuccess", method = RequestMethod.GET)
 	public String logout(Model model) {
- 		return "redirect:/welcome";
+ 		return "redirect:/home";
  	}
 }

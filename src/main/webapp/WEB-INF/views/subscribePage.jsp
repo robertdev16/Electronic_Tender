@@ -1,4 +1,4 @@
-<%-- <%@ include file="/WEB-INF/views/template/header.jsp" %> --%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <div class="container-wrapper">
 	<div class="container">
@@ -20,7 +20,7 @@
 			    your company name, email, telephone and your own username and password. 
 			    Go ahead and create your account by clicking the button below.
 			</p>
-			<a href="<c:url value="/tender/Register Page" />" >CREATE YOUR ACCOUNT</a>
+			<a href="<spring:url value="/tender/Register Page" />" >CREATE YOUR ACCOUNT</a>
 		</div>
 
 
@@ -30,8 +30,7 @@
 				are one step closer to finish up your subscription. Your account
 				will be inactive until you activate it by settling your annual
 				subscription fee.</p>
-			<a href="<c:url value="/tender/Payment Success" />">MAKE PAYMENT</a>
+			<a href="<spring:url value="/tender/Payment Success" />">MAKE PAYMENT</a>
 		</div>
 	</div>
 </div>
-<%-- <%@ include file="/WEB-INF/views/template/footer.jsp" %> --%>

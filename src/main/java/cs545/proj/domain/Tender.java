@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -32,7 +33,7 @@ public class Tender implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	@NotBlank
 	@Column(unique = true)
 	private String refId;
@@ -44,7 +45,7 @@ public class Tender implements Serializable {
 	private User publishUser;
 
 	@ManyToMany(mappedBy = "tenderList")
-	private List<Category> categoryList;
+	private List<Category> categoryList = new ArrayList<Category>();
 	
 	@NotBlank
 	private String description;
@@ -65,10 +66,12 @@ public class Tender implements Serializable {
     private Address address;
 	
     @Temporal(TemporalType.TIMESTAMP)
+    @NotNull
 	private Date postDate;
     
     @DateTimeFormat(pattern = "MM/dd/yyyy")
     @Temporal(TemporalType.DATE)
+    @NotNull
 	private Date deadline;
 
     @NotBlank
