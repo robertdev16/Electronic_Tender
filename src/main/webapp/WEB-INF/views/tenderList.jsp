@@ -9,7 +9,7 @@
 							<a href=" <spring:url value="/tender/detail/${tender.id}"/>">${tender.title}</a>
 							
 							<p>Category: <c:forEach items="${tender.categoryList}" var="category">
-							             $(category.name);
+							             ${category.name};
 							             </c:forEach>
 							</p>							
 							<p>Posted: ${tender.postDate}</p>

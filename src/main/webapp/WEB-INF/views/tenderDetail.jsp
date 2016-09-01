@@ -8,7 +8,7 @@
 							<p>Title: ${tender.title}</p>
 							
 							<p>Category: <c:forEach items="${tender.categoryList}" var="category">
-							             $(category.name);
+							             ${category.name};
 							             </c:forEach>
 							</p>							
 							<p>Posted: ${tender.postDate}</p>
