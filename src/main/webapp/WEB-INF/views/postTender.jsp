@@ -1,118 +1,134 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-	<section class="container">
-		<form:form  modelAttribute="newTender" class="form-horizontal" enctype="multipart/form-data">
-			<fieldset>
-				<legend>Add new tender</legend>
+	<form:form modelAttribute="newTender" enctype="multipart/form-data">
+		<fieldset>
+			<legend>Add new tender</legend>
 
-				<form:errors path="*" cssClass="alert alert-danger" element="div"/>
+			<form:errors path="*" cssClass="formErrorInfo" />
 
 
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="title"><spring:message code="addTender.form.title.label" text="Title"/></label>
-					<div class="col-lg-10">
-						<form:input id="title" path="title" type="text" class="form:input-large"/>
-						<form:errors path="title" cssClass="text-danger"/>
-					</div>
-				</div>
+			<div class="form-group">
+				<label for="title"><spring:message
+						code="addTender.form.title.label" text="Title" /></label>
+				<form:input id="title" path="title" type="text"
+					class="form:input-large" />
+				<form:errors path="title" cssClass="text-danger" />
+			</div>
 
-				
+			<div class="form-group">
+				<label for="description"><spring:message
+						code="addTender.form.description.label" text="Description" /></label>
+				<form:textarea path="description" rows="25" cols="100" />
+				<form:errors path="description" cssClass="text-danger" />
+			</div>
 
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="description"><spring:message code="addTender.form.description.label" text="Description"/></label>
-					<div class="col-lg-10">
-						<form:textarea id="description" path="description" rows="25" cols="100"/>
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="contactEmail"><spring:message code="addTender.form.contactEmail.label" text="Contact Email"/></label>
-					<div class="col-lg-10">
-						<div class="form:input-prepend">
-							<form:input id="contactEmail" path="contactEmail" type="text" class="form:input-large"/>
-							<form:errors path="contactEmail" cssClass="text-danger"/>
-						</div>
-					</div>
-				</div>
+			<div class="form-group">
+				<label for="contactEmail"><spring:message
+						code="addTender.form.contactEmail.label" text="Contact Email" /></label>
+					<form:input path="contactEmail" type="text" />
+					<form:errors path="contactEmail" cssClass="text-danger" />
+			</div>
 
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="contactPerson"><spring:message code="addTender.form.contactPerson.label" text="Contact Person"/></label>
-					<div class="col-lg-10">
-						<form:input id="contactPerson" path="contactPerson" type="text" class="form:input-large"/>
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="phone.area"><spring:message code="addTender.form.phone.area.label" text="Area"/></label>
-					<form:input path="phone.area" cssStyle='width:3em'  />
-					<form:errors path="phone.area" cssStyle="color : red;" />
-					<label class="control-label col-lg-2" for="phone.prefix"><spring:message code="addTender.form.phone.prefix.label" text="Prefix"/></label>
-					<form:input path="phone.prefix" cssStyle='width:3em'  />
-					<form:errors path="phone.prefix" cssStyle="color : red;" />
-					<label class="control-label col-lg-2" for="phone.number"><spring:message code="addTender.form.phone.number.label" text="Number"/></label>
-					<form:input path="phone.number" cssStyle='width:4em'  />
-					<form:errors path="phone.number" cssStyle="color : red;" />
-                </div>
+			<div class="form-group">
+				<label for="contactPerson"><spring:message
+						code="addTender.form.contactPerson.label" text="Contact Person" /></label>
+				<form:input path="contactPerson" type="text" />
+				<form:errors path="contactPerson" cssClass="text-danger" />
+			</div>
 
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="address"><spring:message code="addTender.form.address.label" text="Address"/></label>
-					<label class="control-label col-lg-2" for="address.streetName"><spring:message code="addTender.form.address.strretNmae.label" text="StrretNmae"/></label>
-					<div class="col-lg-10">
-						<form:input id="address.streetName" path="address.streetName" type="text" class="form:input-large"/>
-					</div>
-				</div>
+			<div class="form-group">
+				<label for="phone"><spring:message code="page.phone" text="Phone" />: </label>
+					(<form:input path="phone.area" size="3" maxlength="3" />)
+					<form:input path="phone.prefix" size="3" maxlength="3" /> -
+					<form:input path="phone.number" size="4" maxlength="4" /><br />
+					<spring:message code="register.page.phoneFormat" 
+					text="(area) prefix-number e.g. (641) 472-1188" />
+					<br />
+					<form:errors path="phone.area" cssClass="text-danger" /><br />
+					<form:errors path="phone.prefix" cssClass="text-danger" /><br />
+					<form:errors path="phone.number" cssClass="text-danger" /><br />
+			</div>
 
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="address.apartmentNumber"><spring:message code="addTender.form.address.apartmentNumber.label" text="ApartmentNumber"/></label>
-					<div class="col-lg-10">
-						<form:input id="address.apartmentNumber" path="address.apartmentNumber" type="text" class="form:input-large"/>
-					</div>
-				</div>
+			<div class="form-group">
+				<label for="address"><spring:message
+						code="addTender.form.address.label" text="Address" /></label> 
+				<label for="address.streetName"><br /><spring:message
+						code="addTender.form.address.strretNmae.label" text="SteetName" /></label>
+				<form:input path="address.streetName" type="text"/>
+				<form:errors path="address.streetName" cssClass="text-danger" />
+			</div>
 
-				
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="deadline"><spring:message code="addTender.form.deadline.label" text="Deadline"/></label>
-					<div class="col-lg-10">
-						<form:input id="deadline" path="deadline" type="text" class="form:input-large"/>
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="agency"><spring:message code="addTender.form.agency.label" text="Agency"/></label>
-					<div class="col-lg-10">
-						<form:input path="agency" type="text" class="form:input-large"/>
-					</div>
-				</div>
+			<div class="form-group">
+				<label for="address.apartmentNumber"><spring:message
+						code="addTender.form.address.apartmentNumber.label"
+						text="Apartment Number" /></label>
+				<form:input path="address.apartmentNumber" type="text"/>
+				<form:errors path="address.apartmentNumber" cssClass="text-danger" />
+			</div>
+			
+			<div class="form-group">
+				<label for="address.city"><spring:message
+						code="addTender.form.address.city.label"
+						text="City" /></label>
+				<form:input path="address.city" type="text"/>
+				<form:errors path="address.city" cssClass="text-danger" />
+			</div>
+			
+			<div class="form-group">
+				<label for="address.state"><spring:message
+						code="addTender.form.address.state.label"
+						text="State" /></label>
+				<form:input path="address.state" type="text"/>
+				<form:errors path="address.state" cssClass="text-danger" />
+			</div>
+			
+			<div class="form-group">
+				<label for="address.zipCode"><spring:message
+						code="addTender.form.address.zipCode.label"
+						text="Zip Code" /></label>
+				<form:input path="address.zipCode" type="text"/>
+				<form:errors path="address.zipCode" cssClass="text-danger" />
+			</div>	
 
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="condition"><spring:message code="addProduct.form.condition.label" text="Select Category"/></label>
-					<div id="checkboxesDiv">
-						<form:checkboxes items="${categoryMap}" path="checkedCategoryIDs" />
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="tenderMultipart"><spring:message code="addTender.form.tenderMultipart.label" text="Upload Attachment"/></label>
-					<div class="col-lg-10">
-						<form:input id="tenderMultipart" path="tenderMultipart" type="file"
-							class="form:input-large" />
-					</div>
-				</div>
+			<div class="form-group">
+				<label for="deadline"><spring:message
+						code="addTender.form.deadline.label" text="Deadline" /></label>
+				<form:input path="deadline" type="text" />
+				<form:errors path="deadline" cssClass="text-danger" />
+			</div>
 
-				<div class="form-group">
-					<div class="col-lg-offset-2 col-lg-10">
-						<input type="submit" id="btnAdd" class="btn btn-primary" value ="Add"/>
-					</div>
+			<div class="form-group">
+				<label for="agency"><spring:message
+						code="addTender.form.agency.label" text="Agency" /></label>
+				<form:input path="agency" type="text"/>
+				<form:errors path="agency" cssClass="text-danger" />
+			</div>
+
+			<div class="form-group">
+				<label for="condition"><spring:message
+						code="addProduct.form.condition.label" text="Select Category" /></label>
+				<div id="checkboxesDiv">
+					<form:checkboxes items="${categoryMap}" path="checkedCategoryIDs" />
 				</div>
-				
-			</fieldset>
-		</form:form>
-	</section>
+			</div>
+
+			<div class="form-group">
+				<label for="tenderMultipart"><spring:message
+						code="addTender.form.tenderMultipart.label"
+						text="Upload Attachment" /></label>
+				<form:input path="tenderMultipart" type="file" />
+			</div>
+
+			<div class="form-group">
+				<input type="submit" value="Post Tender" />
+			</div>
+		</fieldset>
+	</form:form>
 </body>
 </html>

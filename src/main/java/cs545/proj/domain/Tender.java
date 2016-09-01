@@ -34,7 +34,6 @@ public class Tender implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@NotBlank
 	@Column(unique = true)
 	private String refId;
 
@@ -48,6 +47,7 @@ public class Tender implements Serializable {
 	private List<Category> categoryList = new ArrayList<Category>();
 	
 	@NotBlank
+	@Column(columnDefinition = "TEXT")
 	private String description;
 
     @NotBlank
@@ -66,7 +66,6 @@ public class Tender implements Serializable {
     private Address address;
 	
     @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
 	private Date postDate;
     
     @DateTimeFormat(pattern = "MM/dd/yyyy")

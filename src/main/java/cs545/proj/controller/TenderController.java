@@ -2,15 +2,20 @@ package cs545.proj.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,6 +52,12 @@ public class TenderController {
 	@ModelAttribute
 	public void prepareCategories(Model model) {
 		model.addAttribute("categories", categoryService.listAllCategories());
+		
+		Map<Integer, String> categoryMap = new LinkedHashMap<Integer, String>();
+		for (Category category : categoryService.listAllCategories()) {
+			categoryMap.put(category.getId(), category.getName());
+		}
+		model.addAttribute("categoryMap", categoryMap);
 	}
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
@@ -70,17 +81,13 @@ public class TenderController {
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String getAddNewTenderForm(@ModelAttribute("newTender") Tender newTender, Model model) {
-		Map<Integer, String> categoryMap = new LinkedHashMap<Integer, String>();
-		for (Category category : categoryService.listAllCategories()) {
-			categoryMap.put(category.getId(), category.getName());
-		}
-		model.addAttribute("categoryMap", categoryMap);
+		
 		return "postTenderTile";
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public String processAddNewTenderForm(@Valid @ModelAttribute("newTender") Tender newTender, BindingResult result,
-			HttpSession session, RedirectAttributes redirect) throws IllegalStateException, IOException {
+			HttpSession session, RedirectAttributes redirect, Principal principal) throws IllegalStateException, IOException {
 
 		if (result.hasErrors()) {
 			return "postTenderTile";
@@ -100,6 +107,21 @@ public class TenderController {
 
 		for (Integer categoryId : newTender.getCheckedCategoryIDs()) {
 			newTender.addCategory(categoryService.getCategoryById(categoryId));
+		}
+		if (principal != null) {
+			Authentication authentication = (Authentication) principal;
+			Set<String> roleSet = new HashSet<String>();
+			for (GrantedAuthority ga : authentication.getAuthorities()) {
+				roleSet.add(ga.getAuthority());
+			}
+			if (roleSet.contains("ROLE_ADMIN"))
+				;
+			else if (roleSet.contains("ROLE_EMPLOYEE"))
+				;
+			else if (roleSet.contains("ROLE_ORGANIZATION"))
+				;
+			else
+				;
 		}
 
 		Tender savedTender = tenderService.saveOrUpdate(newTender);

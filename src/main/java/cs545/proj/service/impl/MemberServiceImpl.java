@@ -3,6 +3,8 @@ package cs545.proj.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,6 +43,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member getMemberById(int memberId) {
 		return memberRepository.getOne(memberId);
+	}
+
+	@Override
+	public void encodeMemberPassword(Member member) {
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		member.getUser().setPassword(passwordEncoder.encode(member.getUser().getPassword()));
+		saveOrUpdate(member);
 	}
 
 }

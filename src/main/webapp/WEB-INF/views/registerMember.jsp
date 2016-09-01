@@ -9,7 +9,7 @@
             <p class="lead">Please fill in your information below:</p>
         </div>
 
-        <form:form methodAttribute="newMember">
+        <form:form modelAttribute="newMember">
 
         <h3>Basic Info:</h3>
 

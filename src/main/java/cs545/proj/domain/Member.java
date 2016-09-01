@@ -39,6 +39,9 @@ public class Member implements Serializable {
 	@ManyToMany(mappedBy = "subscribedMembers")
 	private List<Category> selectedCategories = new ArrayList<Category>();
 
+	@Transient
+    private List<Integer> checkedCategoryIDs = new ArrayList<Integer>();
+	
 	public int getId() {
 		return id;
 	}
@@ -87,6 +90,14 @@ public class Member implements Serializable {
 		this.selectedCategories = selectedCategories;
 	}
 	
+	public List<Integer> getCheckedCategoryIDs() {
+		return checkedCategoryIDs;
+	}
+
+	public void setCheckedCategoryIDs(List<Integer> checkedCategoryIDs) {
+		this.checkedCategoryIDs = checkedCategoryIDs;
+	}
+
 	public void addCategory(Category category) {
 		this.selectedCategories.add(category);
 		category.addMember(this);

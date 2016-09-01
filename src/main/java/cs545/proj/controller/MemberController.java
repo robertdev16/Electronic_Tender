@@ -28,11 +28,11 @@ public class MemberController {
 		return "memberListTile";
 	}
 
-//	@RequestMapping(value = "/detail/{memberId}", method = RequestMethod.GET)
-//	public String getMemberById(@PathVariable("memberId") int memberId, Model model) {
-//		model.addAttribute("member", memberService.getMemberById(memberId));
-//		return "memberDetail";
-//	}
+	@RequestMapping(value = "/detail/{username}", method = RequestMethod.GET)
+	public String getMemberById(@PathVariable("username") String username, Model model) {
+		model.addAttribute("member", memberService.getMemberByUsername(username));
+		return "memberDetailTile";
+	}
 
 	@RequestMapping(value = "/edit/{memberId}", method = RequestMethod.GET)
 	public String getEditMemberForm(@PathVariable("memberId") int memberId, Model model) {
@@ -41,8 +41,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String memberUpdate(@ModelAttribute("newMember") @Valid Member memberToBeEdited, BindingResult result,
-			HttpServletRequest request) {
+	public String memberUpdate(@ModelAttribute("newMember") @Valid Member memberToBeEdited, BindingResult result) {
 		if (result.hasErrors()) {
 			return "editMemberTile";
 		}
@@ -51,8 +50,18 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String getAddNewMemberForm(@ModelAttribute("newMember") Member newMember) {
+	public String getRegisterMemberForm(@ModelAttribute("newMember") Member newMember) {
 		return "registerTile";
+	}
+	
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
+	public String saveNewMember(@Valid @ModelAttribute("newMember") Member newMember, BindingResult result) {
+		
+		if (result.hasErrors()) {
+			return "registerTile";
+		}
+		Member savedMember = memberService.saveOrUpdate(newMember);
+		return "redirect:/member/detail/" + savedMember.getUser().getUsername();
 	}
 
 }

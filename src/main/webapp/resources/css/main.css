@@ -154,7 +154,6 @@ body {
 	color: #FFFF00;
 }
 
-
 #checkboxesDiv label {
 	padding-right: 15px;
 }
@@ -181,4 +180,26 @@ body {
 	z-index: 9002;
    	border-style: solid;
     border-color: blue;
+}
+
+.h2Error {
+	color: red;
+}
+
+.h2Info {
+	color: blue;
+}
+
+#rightDiv input[type="submit"] {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+
+.formErrorInfo .text-danger{
+	color: red;
+}
+
+.form-group {
+	padding: 10px;
 }

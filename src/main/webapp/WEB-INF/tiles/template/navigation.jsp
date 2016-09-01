@@ -3,32 +3,32 @@
 
 <ul>
 
-	<li><a href="<spring:url value='/home'/>">Home</a></li>
-	<li><a href="<spring:url value='/tender/all'/>">Tenders</a></li>
+	<li><a href="<spring:url value='/home'/>"><spring:message code="navi.home" text="Home" /></a></li>
+	<li><a href="<spring:url value='/tender/all'/>"><spring:message code="navi.tenders" text="Tenders" /></a></li>
 	
 	<sec:authorize access="isAnonymous()">
-		<li><a href="<spring:url value='/subscribe'/>">Subscribe</a></li>
+		<li><a href="<spring:url value='/subscribe'/>"><spring:message code="navi.subscribe" text="Subscribe" /></a></li>
 	</sec:authorize>
 	
 	<sec:authorize access="hasAnyRole('ROLE_ORGANIZATION', 'ROLE_EMPLOYEE', 'ROLE_ADMIN')">
-		<li><a href="<spring:url value='/tender/new'/>">New Tender</a></li>
+		<li><a href="<spring:url value='/tender/new'/>"><spring:message code="navi.newTender" text="New Tender" /></a></li>
 	</sec:authorize>
 
 	<sec:authorize access="hasAnyRole('ROLE_ANONYMOUS', 'ROLE_ORGANIZATION', 'ROLE_MEMBER')">
-		<li><a href="<spring:url value='/contact'/>">Contact Us</a></li>
+		<li><a href="<spring:url value='/contact'/>"><spring:message code="navi.contactUs" text="Contact Us" /></a></li>
 	</sec:authorize>
 	
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<li><a href="<spring:url value='/member/all'/>">Manage Member</a></li>
-		<li><a href="<spring:url value='/category/all'/>">Manage Category</a></li>
+		<li><a href="<spring:url value='/member/all'/>"><spring:message code="navi.manageMember" text="Manage Member" /></a></li>
+		<li><a href="<spring:url value='/category/all'/>"><spring:message code="navi.manageCategory" text="Manage Category" /></a></li>
 	</sec:authorize>
 
 	<li id="naviLogin">
 		<sec:authorize access="isAnonymous()">
-			<a href="<spring:url value='/loginPage'/>">Login</a>
+			<a href="<spring:url value='/loginPage'/>"><spring:message code="navi.login" text="Login" /></a>
 		</sec:authorize>
 		<sec:authorize access="isAuthenticated()">
-			<a href="<spring:url value='/doLogout'/>">Logout</a>
+			<a href="<spring:url value='/doLogout'/>"><spring:message code="navi.logout" text="Logout" /></a>
 		</sec:authorize>
 	</li>
 </ul>
