@@ -1,14 +1,10 @@
 package cs545.proj.controller;
 
 import java.security.Principal;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +27,7 @@ public class NavigationController {
 	public String welcome(Model model, Principal principal) {
 		model.addAttribute("categories", categoryService.listAllCategories());
 		model.addAttribute("latest5Tenders", tenderService.findFiveLatestTender());
-		
+
 		if (principal == null)
 			return "homeTile";
 		else

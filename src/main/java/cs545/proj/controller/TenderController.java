@@ -28,8 +28,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cs545.proj.domain.Category;
 import cs545.proj.domain.Tender;
+import cs545.proj.domain.User;
 import cs545.proj.service.CategoryService;
 import cs545.proj.service.EmailService;
+import cs545.proj.service.EmployeeService;
+import cs545.proj.service.MemberService;
 import cs545.proj.service.TenderService;
 
 @Controller
@@ -44,6 +47,12 @@ public class TenderController {
 	
 	@Autowired
 	private EmailService emailService;
+	
+	@Autowired
+	private MemberService memberService;
+	
+	@Autowired
+	private EmployeeService employeeService;
 
 	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 
@@ -109,19 +118,18 @@ public class TenderController {
 			newTender.addCategory(categoryService.getCategoryById(categoryId));
 		}
 		if (principal != null) {
+			User user;
 			Authentication authentication = (Authentication) principal;
 			Set<String> roleSet = new HashSet<String>();
 			for (GrantedAuthority ga : authentication.getAuthorities()) {
 				roleSet.add(ga.getAuthority());
 			}
-			if (roleSet.contains("ROLE_ADMIN"))
-				;
-			else if (roleSet.contains("ROLE_EMPLOYEE"))
-				;
-			else if (roleSet.contains("ROLE_ORGANIZATION"))
-				;
+			if (roleSet.contains("ROLE_MEMBER"))
+				user = memberService.getMemberByUsername(authentication.getName()).getUser();
 			else
-				;
+				user = employeeService.getEmployeeByUsername(authentication.getName()).getUser();
+			
+			newTender.setPublishUser(user);
 		}
 
 		Tender savedTender = tenderService.saveOrUpdate(newTender);

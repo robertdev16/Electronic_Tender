@@ -203,3 +203,37 @@ body {
 .form-group {
 	padding: 10px;
 }
+
+.welCategory {
+	display: inline-block;
+	padding: 20px;
+}
+
+.welTenderLi {
+	padding-bottom: 20px;
+}
+
+#centerDiv h2 {
+	text-align: center;
+	padding: 0;
+	margin: 5px;
+}
+
+.buttonLikelink {
+	display: inline-block;
+	text-align: center;
+	color: #FFFFFF;
+	background-color: #0078D7;
+	width: 200px;
+	height: 30px;
+}
+
+.buttonLikelink a {
+	color: #FFFFFF;
+	background-color: #0078D7;
+	text-decoration: none;
+}
+
+.buttonLikelink a:hover, .buttonLikelink a:focus {
+	opacity: 0.75;
+}

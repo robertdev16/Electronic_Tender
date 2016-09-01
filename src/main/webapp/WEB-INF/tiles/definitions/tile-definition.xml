@@ -47,6 +47,7 @@
 	</definition>
 	
 	<definition name="tenderTile" extends="baseLayout">
+		<put-attribute name="left" value="/WEB-INF/views/categoryMenu.jsp" />
  		<put-attribute name="center" value="/WEB-INF/views/tenderDetail.jsp" />
 	</definition>
 	
