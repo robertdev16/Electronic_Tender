@@ -8,11 +8,11 @@
 <style type="text/css">@import url("<c:url value="/css/main.css"/>");</style>
 </head>
 <body>
-<spring:url var = "editBook" value="/editBook" />
+<spring:url var = "editMember" value="/editMember" />
 
 
 
-<spring:url var = "member_update" value="/member_update" />
+<spring:url var = "member_update" value="/member/update" />
 
 
 <div id="global">

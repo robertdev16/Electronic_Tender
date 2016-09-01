@@ -55,7 +55,7 @@ public class CategoryController {
 			return "editCategory";
 		}
 		categoryService.saveOrUpdate(categoryToBeEdited);
-	   	return "redirect:/categoryList";
+	   	return "redirect:/category/all";
 	}
 
 }

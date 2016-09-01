@@ -5,9 +5,9 @@
 <head>
 <title>Category List</title>
   	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script type="text/javascript" src="<spring:url value="/resource/js/ajax.js"/>"></script>
+	<script type="text/javascript" src="<spring:url value="/resources/js/ajax.js"/>"></script>
 
-<style type="text/css">@import url("<spring:url value="/css/main.css"/>");</style>
+<style type="text/css">@import url("<spring:url value="/resources/css/main.css"/>");</style>
 </head>
 <body>
 
@@ -28,7 +28,7 @@
          <td>${category.tenderList.size()}</td>        
         
         <!-- Spring:url for handling Spring template/@PathVariable -->
-        <spring:url value="/category_edit/{id}"  var="edit" >
+        <spring:url value="/category/edit/{id}"  var="edit" >
    				<spring:param name="id" value="${category.id}" />
  		</spring:url>
          

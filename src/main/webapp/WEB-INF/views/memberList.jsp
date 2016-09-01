@@ -5,8 +5,7 @@
 <head>
 <title>Member List</title>
   	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script type="text/javascript" src="<spring:url value="/resource/js/ajax.js"/>"></script>
-    <style type="text/css">@import url("<spring:url value="/css/main.css"/>");</style>
+    <style type="text/css">@import url("<spring:url value="resources/css/main.css"/>");</style>
   	
 </head>
 <body>
@@ -42,7 +41,7 @@
         <td>${member.address.street}, ${member.address.streetName},${member.address.city}, ${member.address.state}</td>
         
         <!-- Spring:url for handling Spring template/@PathVariable -->
-        <spring:url value="/memberEdit/{id}"  var="edit" >
+        <spring:url value="/member/edit/{id}"  var="edit" >
    				<spring:param name="id" value="${member.id}" />
  		</spring:url>
          

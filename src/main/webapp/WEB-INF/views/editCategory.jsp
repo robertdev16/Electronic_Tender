@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<spring:url var = "category_update" value="/category_update" />
+<spring:url var = "category_update" value="/category/update" />
 
 
 <div id="global">
@@ -23,14 +23,14 @@
             <form:input id="name" path="name"/>
         </p>
         <p>
-            <label for="description">Author: </label>
+            <label for="description">Description: </label>
             <form:input id="description" path="description"/>
         </p>
         
         <p id="buttons">
             <input id="reset" type="reset" tabindex="4">
             <input id="submit" type="submit" tabindex="5" 
-                value="Update Book">
+                value="Update Category">
         </p>
     </fieldset>
 </form:form>

@@ -153,3 +153,27 @@ body {
 #checkboxesDiv label {
 	padding-right: 15px;
 }
+
+#formInput {
+	position:absolute;
+    top:  200px;
+    left: 500px;
+	background-color:LightCyan;	
+	width:375px;
+	height:270px;
+	z-index: 9002;
+   	border-style: solid;
+    border-color: blue;
+}
+
+ #result {
+	position:absolute;
+    top:  50px;
+    left: 500px;
+	background-color:LightBlue;	
+	width:375px;
+	height:175px;
+	z-index: 9002;
+   	border-style: solid;
+    border-color: blue;
+}
