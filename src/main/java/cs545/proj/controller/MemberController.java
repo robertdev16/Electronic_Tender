@@ -36,7 +36,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/edit/{memberId}", method = RequestMethod.GET)
 	public String getEditMemberForm(@PathVariable("memberId") int memberId, Model model) {
-		model.addAttribute("member", memberService.getMemberById(memberId));
+		model.addAttribute("newMember", memberService.getMemberById(memberId));
 		return "editMemberTile";
 	}
 

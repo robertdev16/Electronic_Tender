@@ -5,7 +5,7 @@
 <head>
 <title>Member List</title>
   	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <style type="text/css">@import url("<spring:url value="resources/css/main.css"/>");</style>
+    <!-- style type="text/css">@import url("<spring:url value="resources/css/main.css"/>");</style>-->
   	
 </head>
 <body>
@@ -37,8 +37,10 @@
         <td>${member.user.lastName}</td>
          <td>${member.user.email}</td>
         <td>${member.user.phone.prefix}-${member.user.phone.area}-${member.user.phone.number}</td>
+       
         <td>${member.user.address.streetName}, ${member.user.address.apartmentNumber},${member.user.address.city}, ${member.user.address.state}</td>
         
+        <!-- Spring:url for handling Spring template/@PathVariable -->
         <spring:url value="/member/edit/{id}"  var="edit" >
    				<spring:param name="id" value="${member.id}" />
  		</spring:url>
