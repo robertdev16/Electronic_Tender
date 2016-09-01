@@ -6,7 +6,7 @@ function categorySubmit(){
    	var dataToSend = JSON.stringify(serializeObject($('#categoryForm')));
    	 $.ajax({
 		type: 'POST',
-		url: contextRoot + '/addCategory',
+		url: contextRoot + '/category/add',
 //		url: '/Book5Rest/addCategory',
 		dataType: "json",           // Accepts
  		data:dataToSend,
