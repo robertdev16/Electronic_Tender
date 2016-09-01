@@ -33,14 +33,12 @@
 </tr>
 <c:forEach items="${members}" var="member">
     <tr>
-        <td>${member.firstName}</td>
-        <td>${member.lastName}</td>
-         <td>${member.email}</td>
-        <td>${member.phone.prefix}-${member.phone.area}-${member.phone.number}</td>
-        <!-- <td><spring:eval expression="book.publishDate" /></td> -->
-        <td>${member.address.street}, ${member.address.streetName},${member.address.city}, ${member.address.state}</td>
+        <td>${member.user.firstName}</td>
+        <td>${member.user.lastName}</td>
+         <td>${member.user.email}</td>
+        <td>${member.user.phone.prefix}-${member.user.phone.area}-${member.user.phone.number}</td>
+        <td>${member.user.address.streetName}, ${member.user.address.apartmentNumber},${member.user.address.city}, ${member.user.address.state}</td>
         
-        <!-- Spring:url for handling Spring template/@PathVariable -->
         <spring:url value="/member/edit/{id}"  var="edit" >
    				<spring:param name="id" value="${member.id}" />
  		</spring:url>

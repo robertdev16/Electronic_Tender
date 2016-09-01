@@ -61,4 +61,14 @@
 	<definition name="memberListTile" extends="baseLayout">
  		<put-attribute name="center" value="/WEB-INF/views/memberList.jsp" />
 	</definition>
+	
+	<definition name="editMemberTile" extends="baseLayout">
+ 		<put-attribute name="center" value="/WEB-INF/views/editMember.jsp" />
+	</definition>
+	
+	<definition name="registerTile" extends="baseLayout">
+ 		<put-attribute name="center" value="/WEB-INF/views/registerMember.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>

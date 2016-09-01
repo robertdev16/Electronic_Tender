@@ -9,7 +9,7 @@
             <p class="lead">Please fill in your information below:</p>
         </div>
 
-        <form:form methodAttribute="" action="/register" method="post" >
+        <form:form methodAttribute="newMember">
 
         <h3>Basic Info:</h3>
 

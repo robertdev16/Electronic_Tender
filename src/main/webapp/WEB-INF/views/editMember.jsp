@@ -22,41 +22,28 @@
         <form:hidden path="id"/>
         <p>
             <label for="roleSet">Role : </label>
-             <form:select id="roleSet" path="roleSet.id" items="${roles}"
+             <form:select path="user.roleSet" items="${user.roleSet}"
                 itemLabel="name" itemValue="id"/>
         </p>
         <p>
             <label for="firstName">First Name: </label>
-            <form:input id="firstName" path="firstName" />
+            <form:input path="user.firstName" />
         </p>
         <p>
             <label for="email">Email: </label>
-            <form:input id="author" path="author"/>
+            <form:input path="user.email"/>
         </p>
         <p>
             <label for="organizationName">Organization Name: </label>
-            <form:input id="organizationName" path="organizationName"/>
+            <form:input path="organizationName"/>
         </p>
          <p>
             Address:
             <label for="address.streetName">Street : </label>
-            <form:input path="address.streetName" id="address.streetName" />
+            <form:input path="user.address.streetName" />
          </p>
          
-         <p>
-            <label for="publishDate">Publish Date: </label>
-            <form:input path="publishDate" id="publishDate" />
-         </p>
-         
-         <p>
-            <label for="publishDate">Publish Date: </label>
-            <form:input path="publishDate" id="publishDate" />
-         </p>
-         
-         <p>
-            <label for="publishDate">Publish Date: </label>
-            <form:input path="publishDate" id="publishDate" />
-         </p>
+
         
         <p id="buttons">
             <input id="reset" type="reset" tabindex="4">
