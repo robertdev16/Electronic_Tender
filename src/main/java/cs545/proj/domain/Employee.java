@@ -32,7 +32,7 @@ public class Employee implements Serializable {
 	@NotBlank
 	private String gender;
 	
-	@DateTimeFormat(pattern = "MM-dd-yyyy")
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date birthday;
 

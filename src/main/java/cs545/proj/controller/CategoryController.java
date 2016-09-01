@@ -21,13 +21,13 @@ import cs545.proj.service.CategoryService;
 
 
 @Controller
+@RequestMapping("/category")
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
-  // @Valid - but NO BindResult! an exception will be thrown...
-    @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody Category saveCategory( @Valid  @RequestBody Category category) {
  
          categoryService.saveOrUpdate(category);
@@ -35,16 +35,16 @@ public class CategoryController {
     }
     
 
-	@RequestMapping("/category_edit/{id}")
-	@PreAuthorize("hasRole('ROLE_ADMIN')") 
+	@RequestMapping(value="/edit/{id}", method = RequestMethod.GET)
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String getEditCatalogForm(@PathVariable("id") int id, Model model) {
 		Category category = categoryService.getCategoryById(id);
 		model.addAttribute("catagory", category );
 		   return "editCategory";
 		}
 	
-	@RequestMapping(value="/member_update" ,method = RequestMethod.POST)
-//	@PreAuthorize("hasRole('ROLE_ADMIN')") 
+	@RequestMapping(value="/update", method = RequestMethod.POST)
+//	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String categoryupdate(@ModelAttribute("newMember") @Valid Category categoryToBeEdited, BindingResult result, HttpServletRequest request) {
 		if(result.hasErrors()) {
 			return "editCategory";

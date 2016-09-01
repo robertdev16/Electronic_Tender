@@ -1,10 +1,12 @@
 package cs545.proj.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,6 +34,7 @@ public class Tender implements Serializable {
 	private int id;
 	
 	@NotBlank
+	@Column(unique = true)
 	private String refId;
 
 	@NotBlank
@@ -64,7 +67,7 @@ public class Tender implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
 	private Date postDate;
     
-    @DateTimeFormat(pattern = "MM-dd-yyyy")
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     @Temporal(TemporalType.DATE)
 	private Date deadline;
 
@@ -75,6 +78,17 @@ public class Tender implements Serializable {
     private MultipartFile tenderMultipart;
 
     private String attachmentFileName="";
+    
+    @Transient
+    private List<Integer> checkedCategoryIDs = new ArrayList<Integer>();
+
+	public List<Integer> getCheckedCategoryIDs() {
+		return checkedCategoryIDs;
+	}
+
+	public void setCheckedCategoryIDs(List<Integer> checkedCategoryIDs) {
+		this.checkedCategoryIDs = checkedCategoryIDs;
+	}
 
 	public int getId() {
 		return id;

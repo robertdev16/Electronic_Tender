@@ -148,3 +148,8 @@ body {
 #footerDiv a {
 	color: #FFFF00;
 }
+
+
+#checkboxesDiv label {
+	padding-right: 15px;
+}

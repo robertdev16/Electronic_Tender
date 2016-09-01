@@ -19,27 +19,27 @@ import cs545.proj.service.MemberService;
 
 
 @Controller
-@RequestMapping({"/members"})
+@RequestMapping({"/member"})
 public class MemberController {
 	
 	@Autowired
 	private MemberService  memberService;
 
-	@RequestMapping
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	@PreAuthorize("hasRole('ROLE_ADMIN')") 
 	public String listMembers(Model model) {
 		model.addAttribute("members", memberService.listAllVerificationRequestMembers());
 		return "memberList";
 	}
 	
-  	@RequestMapping("/{username}")
+  	@RequestMapping(value = "/detail/{username}", method = RequestMethod.GET)
 	public String getMemberUserName(@PathVariable("username") String username,Model model) {
 		Member member = memberService.getMemberByUsername(username);
 		model.addAttribute("member", member);
  		return "memberDetail";
 	}
 
-	@RequestMapping("/member_edit/{id}")
+	@RequestMapping(value = "/edit/{id}",  method = RequestMethod.GET)
 //	@PreAuthorize("hasRole('ROLE_ADMIN')") 
 	public String getEditMemberForm(@PathVariable("id") int id, Model model) {
 //		Member member = memberService.getMemberById(id);
@@ -47,7 +47,7 @@ public class MemberController {
 		   return "editMember";
 		}
 	
-	@RequestMapping(value="/member_update" ,method = RequestMethod.POST)
+	@RequestMapping(value="/updateByAdmin" ,method = RequestMethod.POST)
 	@PreAuthorize("hasRole('ROLE_ADMIN')") 
 	public String memberupdateByAdmin(@ModelAttribute("newMember") @Valid Member memberToBeEdited, BindingResult result, HttpServletRequest request) {
 		if(result.hasErrors()) {
@@ -57,7 +57,7 @@ public class MemberController {
 	   	return "redirect:/memberList";
 	}
 	
-	@RequestMapping(value="/member_update" ,method = RequestMethod.POST)
+	@RequestMapping(value="/update" ,method = RequestMethod.POST)
 	@PreAuthorize("hasRole('ROLE_MEMBER')") 
 	public String memberupdate(@ModelAttribute("newMember") @Valid Member memberToBeEdited, BindingResult result, HttpServletRequest request) {
 		if(result.hasErrors()) {
