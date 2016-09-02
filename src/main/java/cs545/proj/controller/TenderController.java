@@ -114,8 +114,9 @@ public class TenderController {
 			newTender.setAttachmentFileName(newFilename);
 		}
 
+		Tender savedTender = tenderService.saveOrUpdate(newTender);
 		for (Integer categoryId : newTender.getCheckedCategoryIDs()) {
-			newTender.addCategory(categoryService.getCategoryById(categoryId));
+			savedTender.addCategory(categoryService.getCategoryById(categoryId));
 		}
 		if (principal != null) {
 			User user;
@@ -124,15 +125,15 @@ public class TenderController {
 			for (GrantedAuthority ga : authentication.getAuthorities()) {
 				roleSet.add(ga.getAuthority());
 			}
-			if (roleSet.contains("ROLE_MEMBER"))
+			if (roleSet.contains("ROLE_ORGANIZATION"))
 				user = memberService.getMemberByUsername(authentication.getName()).getUser();
 			else
 				user = employeeService.getEmployeeByUsername(authentication.getName()).getUser();
 			
-			newTender.setPublishUser(user);
+			savedTender.setPublishUser(user);
 		}
 
-		Tender savedTender = tenderService.saveOrUpdate(newTender);
+		savedTender = tenderService.saveOrUpdate(savedTender);
 		emailService.informMembersByTender(savedTender);
 
 		redirect.addFlashAttribute("successNew", true);

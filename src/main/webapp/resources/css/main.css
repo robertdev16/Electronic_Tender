@@ -183,11 +183,23 @@ body {
 }
 
 .h2Error {
+	text-align: center;
 	color: red;
 }
 
 .h2Info {
+	text-align: center;
 	color: blue;
+}
+
+#leftDiv div {
+	padding: 5px;
+}
+
+#leftDiv a:hover, #leftDiv a:focus {
+	color: #FFFFFF;
+	background-color: #0078D7;
+	text-decoration: none;
 }
 
 #rightDiv input[type="submit"] {
@@ -195,8 +207,12 @@ body {
 	font-weight: bold;
 }
 
+button {
+	font-size: 1.2em;
+	font-weight: bold;
+}
 
-.formErrorInfo .text-danger{
+.formErrorInfo, .text-danger {
 	color: red;
 }
 
@@ -236,4 +252,8 @@ body {
 
 .buttonLikelink a:hover, .buttonLikelink a:focus {
 	opacity: 0.75;
+}
+
+#tenderListDiv {
+	padding-left: 5px;
 }

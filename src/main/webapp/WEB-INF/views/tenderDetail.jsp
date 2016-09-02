@@ -4,6 +4,11 @@
 
 
 						<div id="centerDiv">
+							<c:if test="${successNew eq true}">
+								<h2 class="h2Info">Great! You have posted a new tender:</h2>
+								<hr />
+							</c:if>
+							
 							<h3>REF-ID: ${tender.refId}</h3>
 							<p>Title: ${tender.title}</p>
 							
@@ -30,10 +35,11 @@
 							<p>Contact Person: ${tender.contactPerson}</p>
 							<p>Contact Email: ${tender.contactEmail}</p>
 							
-							<p>Attachment: 
-							<a href="<spring:url value='/resources/images/attached/${tender.attachmentFileName}'/>">
+							<c:if test="${not empty tender.attachmentFileName}">
+								<p>Attachment: 
+								<a href="<spring:url value='/resources/images/attached/${tender.attachmentFileName}'/>">
 								${tender.attachmentFileName}
-							</a>
-							</p>	
-							
+								</a>
+								</p>
+							</c:if>
 						</div>

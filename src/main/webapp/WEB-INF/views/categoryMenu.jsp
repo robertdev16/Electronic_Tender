@@ -4,17 +4,19 @@
 
 
 <div id="leftDiv">
-<table>
-	<tr>
-		<th>Business Area</th>
-	</tr>
+
+
+	<h2 class="h2Info">Business Area</h2>
 
 	<c:forEach items="${categories}" var="category">
-		<tr>
-			<td><a href="<spring:url value='/tender/byCategory/${category.id}' />">
+	<div>
+		<a href="<spring:url value='/tender/byCategory/${category.id}' />">
 			${category.name}
-			</a></td>
-		</tr>
+		</a>
+	</div>
 	</c:forEach>
-</table>
+	
+	
+	<h2 class="h2Info">Search Title</h2>
+
 </div>

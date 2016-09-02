@@ -2,7 +2,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 
-		<div id="centerDiv">
+	<div id="centerDiv">
+		<div id="tenderListDiv">
+			<c:if test="${empty tenders}">
+				<h3>No tender found in this category!</h3>
+			</c:if>
+			
 			<c:forEach items="${tenders}" var="tender">
 						<div class="caption">
 							<h3>${tender.refId}</h3>
@@ -18,3 +23,4 @@
 						<hr>
 			</c:forEach>
 		</div>
+	</div>

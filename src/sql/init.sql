@@ -21,12 +21,13 @@ INSERT INTO user_roleset (User_id, roleSet) VALUES (1, 'ROLE_ADMIN');
 INSERT INTO user_roleset (User_id, roleSet) VALUES (1, 'ROLE_EMPLOYEE');
 INSERT INTO user_roleset (User_id, roleSet) VALUES (2, 'ROLE_EMPLOYEE');
 INSERT INTO user_roleset (User_id, roleSet) VALUES (3, 'ROLE_MEMBER');
+INSERT INTO user_roleset (User_id, roleSet) VALUES (4, 'ROLE_MEMBER');
 INSERT INTO user_roleset (User_id, roleSet) VALUES (4, 'ROLE_ORGANIZATION');
 INSERT INTO user_roleset (User_id, roleSet) VALUES (5, 'ROLE_EMPLOYEE');
 
 INSERT INTO employee (birthday, gender, user_id) VALUES ('2002-02-02', 'Male', 1);
 INSERT INTO employee (birthday, gender, user_id) VALUES ('1999-09-09', 'Male', 2);
-INSERT INTO employee (birthday, gender, user_id) VALUES ('2001-01-01', 'Male', 3);
+INSERT INTO employee (birthday, gender, user_id) VALUES ('2001-01-01', 'Male', 5);
 
 INSERT INTO member (user_id) VALUES (3);
 INSERT INTO member (user_id, organizationName, licenseFileName) VALUES (4, 'SpringFuns.Org', '20160831123000license.png');

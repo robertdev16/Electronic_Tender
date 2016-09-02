@@ -9,16 +9,20 @@
 </div>
 
 <div id="headerCellRight">
-	<sec:authorize access="hasAnyRole('ROLE_MEMBER', 'ROLE_ORGANIZATION')">
-		<sec:authentication property="principal" var="authentication" />
-		<spring:url value='/member/detail/{accountName}' var="memberUrl" >
-   			<spring:param name="accountName" value="${authentication.username}" />
- 		</spring:url>
 		<span id="viewProfileSpan">
+		<sec:authorize access="hasAnyRole('ROLE_MEMBER', 'ROLE_ORGANIZATION')">
+			<sec:authentication property="principal" var="authentication" />
+			<spring:url value='/member/detail/{accountName}' var="memberUrl" >
+   				<spring:param name="accountName" value="${authentication.username}" />
+ 			</spring:url>
 			<spring:message code="header.view" text="View your profile" />: 
 			<a href="${memberUrl}">
 				${authentication.username}
 			</a>
+		</sec:authorize>
+		<sec:authorize access="hasAnyRole('ROLE_EMPLOYEE', 'ROLE_ADMIN')">
+			<sec:authentication property="principal" var="authentication" />
+			<spring:message code="header.account" text="Username" />: ${authentication.username}
+		</sec:authorize>		
 		</span>
-	</sec:authorize>
 </div>

@@ -63,6 +63,10 @@
  		<put-attribute name="center" value="/WEB-INF/views/memberList.jsp" />
 	</definition>
 	
+	<definition name="memberDetailTile" extends="baseLayout">
+ 		<put-attribute name="center" value="/WEB-INF/views/memberDetail.jsp" />
+	</definition>
+	
 	<definition name="editMemberTile" extends="baseLayout">
  		<put-attribute name="center" value="/WEB-INF/views/editMember.jsp" />
 	</definition>
