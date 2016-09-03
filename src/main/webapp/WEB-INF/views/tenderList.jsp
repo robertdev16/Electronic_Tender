@@ -13,14 +13,19 @@
 			<c:forEach items="${tenders}" var="tender">
 						<div class="caption">
 							<h3>${tender.refId}</h3>
-							<a href=" <spring:url value="/tender/detail/${tender.id}"/>">${tender.title}</a>
+							<div class="padding5pxDiv">
+								<a href=" <spring:url value="/tender/detail/${tender.id}"/>">${tender.title}</a>
+							</div>
 							
-							<p>Category: <c:forEach items="${tender.categoryList}" var="category">
-							             ${category.name};
-							             </c:forEach>
-							</p>							
-							<p>Posted: ${tender.postDate}</p>
-							<p>DeadLine: ${tender.deadline}</p>	
+							
+							<div class="padding5pxDiv">
+							Category: 
+								<c:forEach items="${tender.categoryList}" var="category">
+									${category.name};
+								</c:forEach>
+							</div>							
+							<div class="padding5pxDiv deadlineDiv">DeadLine: ${tender.deadline}</div>
+							<div class="textAlignRightDiv"><div>Posted: ${tender.postDate}</div></div>	
 						</div>
 						<hr>
 			</c:forEach>

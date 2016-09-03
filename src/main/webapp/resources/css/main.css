@@ -277,3 +277,11 @@ button {
 .padding5pxDiv {
 	padding: 5px;
 }
+
+.deadlineDiv {
+	color: #800000;
+}
+
+.textAlignRightDiv {
+	text-align: right;
+}
