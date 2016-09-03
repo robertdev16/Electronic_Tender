@@ -1,6 +1,5 @@
 package cs545.proj.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +44,7 @@ public class MemberController {
 		if (result.hasErrors()) {
 			return "editMemberTile";
 		}
-		memberService.saveOrUpdate(memberToBeEdited);
+		memberService.saveOrMerge(memberToBeEdited);
 		return "redirect:/memberListTile";
 	}
 
@@ -60,7 +59,7 @@ public class MemberController {
 		if (result.hasErrors()) {
 			return "registerTile";
 		}
-		Member savedMember = memberService.saveOrUpdate(newMember);
+		Member savedMember = memberService.saveOrMerge(newMember);
 		return "redirect:/member/detail/" + savedMember.getUser().getUsername();
 	}
 

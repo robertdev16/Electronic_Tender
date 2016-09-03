@@ -6,8 +6,8 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import cs545.proj.domain.Category;
 import cs545.proj.domain.Member;
@@ -15,7 +15,6 @@ import cs545.proj.domain.Tender;
 import cs545.proj.service.EmailService;
 
 @Service
-@Transactional
 public class EmailServiceImpl implements EmailService {
 
 	@Autowired
@@ -34,7 +33,8 @@ public class EmailServiceImpl implements EmailService {
 	}
 
 	@Override
-	public int informMembersByEmail(Set<String> emailSet, String title) {
+	@Async
+	public void informMembersByEmail(Set<String> emailSet, String title) {
 
 		String[] memberEmails = emailSet.toArray(new String[0]);
 		SimpleMailMessage smm = new SimpleMailMessage();
@@ -46,13 +46,6 @@ public class EmailServiceImpl implements EmailService {
 				+ title + "\n\nWelcome to login our site and check it at your convenience. Thank you!");
 		
 		mailSender.send(smm);
-		
-		return memberEmails.length;
-	}
-
-	@Override
-	public int informMembersByTender(Tender tender) {
-		return informMembersByEmail(getAllEmailsNeedInformedByTender(tender), tender.getTitle());
 	}
 
 }

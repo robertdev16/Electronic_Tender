@@ -24,7 +24,7 @@
 
 	<sec:authorize access="isAuthenticated()">
 		<li id="naviLogin">
-			<a href="<spring:url value='/doLogout'/>">Logout</a>
+			<a href="<spring:url value='/doLogout'/>"><spring:message code="navi.logout" text="Logout" /></a>
 		</li>
 	</sec:authorize>
 

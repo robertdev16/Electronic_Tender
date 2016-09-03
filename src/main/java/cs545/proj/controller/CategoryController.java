@@ -35,7 +35,7 @@ public class CategoryController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody Category saveCategory( @Valid  @RequestBody Category category) {
  
-         categoryService.saveOrUpdate(category);
+         categoryService.saveOrMerge(category);
          return category;
     }
     
@@ -53,7 +53,7 @@ public class CategoryController {
 		if(result.hasErrors()) {
 			return "editCategory";
 		}
-		categoryService.saveOrUpdate(categoryToBeEdited);
+		categoryService.saveOrMerge(categoryToBeEdited);
 	   	return "redirect:/category/all";
 	}
 

@@ -6,6 +6,6 @@ public interface EmployeeService {
 
 	public Employee getEmployeeByUsername(String username);
 	
-	public Employee saveOrUpdate(Employee employee);
+	public Employee saveOrMerge(Employee employee);
 
 }

@@ -1,5 +1,6 @@
 package cs545.proj.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,27 +21,27 @@ public class TenderServiceImpl implements TenderService {
 
 	@Override
 	public List<Tender> listAllTenders() {
-		return tenderRepository.findAll();
+		return tenderRepository.listAllUnexpiredTendersByPostDateDesc(new Date());
 	}
 
 	@Override
 	public Tender getTenderById(int tenderId) {
-		return tenderRepository.getOne(tenderId);
+		return tenderRepository.findOne(tenderId);
 	}
 
 	@Override
-	public Tender saveOrUpdate(Tender tender) {
+	public Tender saveOrMerge(Tender tender) {
 		return tenderRepository.saveAndFlush(tender);
 	}
 
 	@Override
 	public List<Tender> findByPublishUser(User user) {
-		return tenderRepository.findByPublishUser(user);
+		return tenderRepository.findByPublishUserOrderByPostDateDesc(user);
 	}
 
 	@Override
 	public List<Tender> findByAgency(String agency) {
-		return tenderRepository.findByAgency(agency);
+		return tenderRepository.findByAgencyOrderByPostDateDesc(agency);
 	}
 
 	@Override
@@ -50,7 +51,7 @@ public class TenderServiceImpl implements TenderService {
 
 	@Override
 	public List<Tender> searchTenderByTitle(String keyword) {
-		return tenderRepository.findByTitleLike("%" + keyword + "%");
+		return tenderRepository.findByTitleLikeOrderByPostDateDesc("%" + keyword + "%");
 	}
 
 }

@@ -13,7 +13,7 @@
 	<form action="<spring:url value='/doLogin' />" method="post">
 		<p><spring:message code="loginPage.email" text="Email" />:</p>
 		<p>
-			<input name="username" type="text" placeholder="User Name" />
+			<input name="username" type="text" placeholder="Account Email" />
 		</p>
 		<p><spring:message code="loginPage.password" text="Password" />:</p>
 		<p>

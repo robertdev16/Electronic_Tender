@@ -23,13 +23,13 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public Category saveOrUpdate(Category category) {
+	public Category saveOrMerge(Category category) {
 		return categoryRepository.saveAndFlush(category);
 	}
 
 	@Override
 	public Category getCategoryById(int categoryId) {
-		return categoryRepository.getOne(categoryId);
+		return categoryRepository.findOne(categoryId);
 	}
 
 }

@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Member saveOrUpdate(Member member) {
+	public Member saveOrMerge(Member member) {
 		return memberRepository.saveAndFlush(member);
 	}
 
@@ -42,14 +42,14 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member getMemberById(int memberId) {
-		return memberRepository.getOne(memberId);
+		return memberRepository.findOne(memberId);
 	}
 
 	@Override
 	public void encodeMemberPassword(Member member) {
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		member.getUser().setPassword(passwordEncoder.encode(member.getUser().getPassword()));
-		saveOrUpdate(member);
+		saveOrMerge(member);
 	}
 
 }

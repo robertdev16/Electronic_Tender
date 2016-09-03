@@ -14,7 +14,7 @@ public interface MemberService {
 	
 	public List<Member> listVerificationRequestMembers();
 	
-	public Member saveOrUpdate(Member member);
+	public Member saveOrMerge(Member member);
 	
 	public void encodeMemberPassword(Member member);
 }

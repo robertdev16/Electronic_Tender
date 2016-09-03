@@ -24,7 +24,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee saveOrUpdate(Employee employee) {
+	public Employee saveOrMerge(Employee employee) {
 		return employeeRepository.saveAndFlush(employee);
 	}
 

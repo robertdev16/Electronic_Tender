@@ -11,7 +11,7 @@ public interface TenderService {
 	
 	public Tender getTenderById(int tenderId);
 
-	public Tender saveOrUpdate(Tender tender);
+	public Tender saveOrMerge(Tender tender);
 
 	public List<Tender> findByPublishUser(User user);
 

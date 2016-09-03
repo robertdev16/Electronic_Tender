@@ -23,12 +23,13 @@
 							
 							<p>Description: ${tender.description}</p>
 							Address:<br />
-							
+							<blockquote>
 							<p>Street:${tender.address.streetName}</p>
-							<p>No:${tender.address.apartmentNumber}</p>
+							<p>Apartment No:${tender.address.apartmentNumber}</p>
 							<p>City:${tender.address.city}</p>
 							<p>State:${tender.address.state}</p>
 							<p>Country:${tender.address.country}</p>
+							</blockquote>
 							<p>Phone: (${tender.phone.area}) ${tender.phone.prefix}-${tender.phone.number}</p>
 							
 							<p>Agency: ${tender.agency}</p>

@@ -77,20 +77,15 @@ public class TenderController {
 		return "tenderListTile";
 	}
 
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String searchTenderResult() {
-		return "tenderListTile";
-	}
-	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public String searchTenderTitle(@RequestParam("keyword") String keyword, RedirectAttributes redirect) {
+	public String searchTenderTitle(@RequestParam("keyword") String keyword, Model model) {
 		String trimKey = keyword.trim();
 		if (trimKey.isEmpty())
 			return "redirect:/tender/all";
 		
-		redirect.addFlashAttribute("tenders", tenderService.searchTenderByTitle(trimKey));
-		redirect.addFlashAttribute("lastSearchKeyword", trimKey);
-		return "redirect:/tender/search";
+		model.addAttribute("tenders", tenderService.searchTenderByTitle(trimKey));
+		model.addAttribute("lastSearchKeyword", trimKey);
+		return "tenderListTile";
 	}
 	
 	@RequestMapping(value = "/byCategory/{categoryId}", method = RequestMethod.GET)
@@ -133,7 +128,7 @@ public class TenderController {
 			newTender.setAttachmentFileName(newFilename);
 		}
 
-		Tender savedTender = tenderService.saveOrUpdate(newTender);
+		Tender savedTender = tenderService.saveOrMerge(newTender);
 		for (Integer categoryId : newTender.getCheckedCategoryIDs()) {
 			savedTender.addCategory(categoryService.getCategoryById(categoryId));
 		}
@@ -152,8 +147,8 @@ public class TenderController {
 			savedTender.setPublishUser(user);
 		}
 
-		savedTender = tenderService.saveOrUpdate(savedTender);
-		emailService.informMembersByTender(savedTender);
+		savedTender = tenderService.saveOrMerge(savedTender);
+		emailService.informMembersByEmail(emailService.getAllEmailsNeedInformedByTender(savedTender), savedTender.getTitle());
 
 		redirect.addFlashAttribute("successNew", true);
 		return "redirect:/tender/detail/" + savedTender.getId();

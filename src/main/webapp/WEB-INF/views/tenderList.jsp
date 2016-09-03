@@ -5,7 +5,9 @@
 	<div id="centerDiv">
 		<div id="tenderListDiv">
 			<c:if test="${empty tenders}">
-				<h3>No tender found in this category or with your searching key word!</h3>
+				<h3>There is no tender in this category</h3>
+				<h3>Or no tender found with current searching key word</h3>
+				<h4>(Notice: EXPIRED tenders are not shown when you list ALL tenders!)</h4>
 			</c:if>
 			
 			<c:forEach items="${tenders}" var="tender">

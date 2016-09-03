@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -28,6 +29,7 @@ public class Category implements Serializable {
 	private String description;
 	
 	@ManyToMany
+	@OrderBy("postDate DESC")
 	private List<Tender> tenderList = new ArrayList<Tender>();
 
 	@ManyToMany

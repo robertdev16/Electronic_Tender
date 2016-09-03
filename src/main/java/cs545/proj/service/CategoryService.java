@@ -10,6 +10,6 @@ public interface CategoryService {
 	
 	public Category getCategoryById(int categoryId);
 	
-	public Category saveOrUpdate(Category category);
+	public Category saveOrMerge(Category category);
 
 }
