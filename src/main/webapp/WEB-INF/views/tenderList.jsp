@@ -5,7 +5,7 @@
 	<div id="centerDiv">
 		<div id="tenderListDiv">
 			<c:if test="${empty tenders}">
-				<h3>No tender found in this category!</h3>
+				<h3>No tender found in this category or with your searching key word!</h3>
 			</c:if>
 			
 			<c:forEach items="${tenders}" var="tender">

@@ -10,7 +10,7 @@ INSERT INTO phone (area, prefix, number) VALUES ('641', '472', '6663');
 INSERT INTO phone (area, prefix, number) VALUES ('641', '472', '6664');
 INSERT INTO phone (area, prefix, number) VALUES ('641', '472', '6665');
 
---username is the same as email
+--username is the same as email, and initial password is '123456'
 INSERT INTO user(email, firstName, lastName, username, password, address_id, phone_id) VALUES ('admin@mum.edu', 'admin', 'mum', 'admin@mum.edu', '$2a$10$mAligLCL4vxdrWESQO366utD0xrGMA2bSG5rOhMRR4C.U.Kn.h9eS', 1, 1);
 INSERT INTO user(email, firstName, lastName, username, password, address_id, phone_id) VALUES ('guest@mum.edu', 'guest', 'mum', 'guest@mum.edu', '$2a$10$mAligLCL4vxdrWESQO366utD0xrGMA2bSG5rOhMRR4C.U.Kn.h9eS', 2, 2);
 INSERT INTO user(email, firstName, lastName, username, password, address_id, phone_id) VALUES ('geb.meh@gmail.com', 'Gebremedhn', ' ', 'geb.meh@gmail.com', '$2a$10$mAligLCL4vxdrWESQO366utD0xrGMA2bSG5rOhMRR4C.U.Kn.h9eS', 3, 3);

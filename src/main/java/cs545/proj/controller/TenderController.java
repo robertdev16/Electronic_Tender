@@ -17,12 +17,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -75,10 +77,27 @@ public class TenderController {
 		return "tenderListTile";
 	}
 
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String searchTenderResult() {
+		return "tenderListTile";
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public String searchTenderTitle(@RequestParam("keyword") String keyword, RedirectAttributes redirect) {
+		String trimKey = keyword.trim();
+		if (trimKey.isEmpty())
+			return "redirect:/tender/all";
+		
+		redirect.addFlashAttribute("tenders", tenderService.searchTenderByTitle(trimKey));
+		redirect.addFlashAttribute("lastSearchKeyword", trimKey);
+		return "redirect:/tender/search";
+	}
+	
 	@RequestMapping(value = "/byCategory/{categoryId}", method = RequestMethod.GET)
 	public String getTendersByCategoryId(@PathVariable("categoryId") int categoryId, Model model) {
 		Category category = categoryService.getCategoryById(categoryId);
 		model.addAttribute("tenders", (category == null) ? null : category.getTenderList());
+		model.addAttribute("selectedCategoryId", categoryId);
 		return "tenderListTile";
 	}
 

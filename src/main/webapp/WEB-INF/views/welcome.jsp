@@ -33,10 +33,9 @@
 					</li>
 				</c:forEach>
 			</ul>
-			<div class="buttonLikelink">
-				<a href="<spring:url value='/tender/all' />">
-					More tenders...
-				</a>
+			<div class="buttonLikeDiv"
+				onclick="window.location.href='<spring:url value="/tender/all" />'">
+				More tenders...
 			</div>
 		</div>
 	</div>
