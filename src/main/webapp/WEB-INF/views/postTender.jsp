@@ -126,7 +126,7 @@
 			</div>
 
 			<div class="form-group">
-				<input type="submit" value="Post Tender" />
+				<input type="submit" value='<spring:message code="postTenderPage.postButton" text="Post Tender" />' />
 			</div>
 		</fieldset>
 	</form:form>

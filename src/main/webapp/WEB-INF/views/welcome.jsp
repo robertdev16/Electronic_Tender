@@ -1,7 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
 
 <html>
 <head>
@@ -11,7 +9,7 @@
 
 	<div id="centerDiv">
 		<div>
-			<h2>Business Area</h2>
+			<h2><spring:message code="welcomePage.businessArea" text="Business Area" /></h2>
 			<hr>
 
 			<c:forEach items="${categories}" var="category">
@@ -21,7 +19,7 @@
 				</div>
 			</c:forEach>
 
-			<h2>Latest Tenders</h2>
+			<h2><spring:message code="welcomePage.latestTenders" text="Latest Tenders" /></h2>
 			<hr>
 			<ul>
 				<c:forEach items="${latest5Tenders}" var="tender">
@@ -35,7 +33,7 @@
 			</ul>
 			<div class="buttonLikeDiv"
 				onclick="window.location.href='<spring:url value="/tender/all" />'">
-				More tenders...
+				<spring:message code="welcomePage.moreTenders" text="More tenders..." />
 			</div>
 		</div>
 	</div>
