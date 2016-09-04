@@ -29,6 +29,6 @@
 				are one step closer to finish up your subscription. Your account
 				will be inactive until you activate it by settling your annual
 				subscription fee.</p>
-			<a href="<spring:url value='/payment' />">MAKE PAYMENT</a>
+			<a href="<spring:url value='/member/payment' />">MAKE PAYMENT</a>
 		</div>
 	</div>

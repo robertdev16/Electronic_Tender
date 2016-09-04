@@ -16,6 +16,7 @@
 	<context:component-scan base-package="cs545.proj.service" />
 	<context:component-scan base-package="cs545.proj.domain" />
 	<context:component-scan base-package="cs545.proj.repository" />
+	<context:component-scan base-package="cs545.proj.validator" />
 
 	<bean id="entityManager"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

@@ -5,20 +5,12 @@
 <head>
 <title>Member List</title>
   	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <!-- style type="text/css">@import url("<spring:url value="resources/css/main.css"/>");</style>-->
   	
 </head>
 <body>
 
-<div id="global">
+<div id="centerDiv">
 <h1>Member List</h1>
-
-<!-- Query Parameter passing 
-<spring:url value="/addMember" var="addMember_url" >
-</spring:url>
-<a href="${addMember_url}">Add Member</a><br/> -->
-
- 
  
 <table>
 <tr style="width: 100%;">

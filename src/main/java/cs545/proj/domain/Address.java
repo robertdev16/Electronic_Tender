@@ -32,6 +32,7 @@ public class Address implements Serializable{
     @NotBlank
     private String state;
     
+    @NotBlank
     private String country;
     
     @NotBlank

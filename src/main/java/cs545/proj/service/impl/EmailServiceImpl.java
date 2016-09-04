@@ -34,16 +34,20 @@ public class EmailServiceImpl implements EmailService {
 
 	@Override
 	@Async
-	public void informMembersByEmail(Set<String> emailSet, String title) {
+	public void informMembersByEmail(Tender tender) {
 
-		String[] memberEmails = emailSet.toArray(new String[0]);
+		String[] memberEmails = getAllEmailsNeedInformedByTender(tender).toArray(new String[0]);
 		SimpleMailMessage smm = new SimpleMailMessage();
 		smm.setFrom("Electronic Tender <springfuns2016@gmail.com>");
 		smm.setTo("springfuns2016@gmail.com");
 		smm.setBcc(memberEmails);
-		smm.setSubject("New [Electronic Tender] " + title);
-		smm.setText("Dear Electronic Tender Member, there is a new tender posted with the following TITLE:\n\n"
-				+ title + "\n\nWelcome to login our site and check it at your convenience. Thank you!");
+		smm.setSubject("New [Electronic Tender] " + tender.getTitle());
+		smm.setText("Dear Electronic Tender Member, there is a new tender posted with the following summary.\n"
+				+ "Welcome to visit our site for detail information. Thank you!\n"
+				+ "\nTiTle:\n" + tender.getTitle()
+				+ "\n\nPosted: " + tender.getPostDate()
+				+ "\nDeadline: " + tender.getDeadline()
+				+ "\n\nDescription:\n" + tender.getDescription());
 		
 		mailSender.send(smm);
 	}

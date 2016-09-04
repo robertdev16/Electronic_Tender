@@ -10,10 +10,13 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
@@ -31,12 +34,19 @@ public class User implements Serializable {
     private int id;
     
     @NotBlank
+    @Email
     @Column(unique = true)
     private String username;
     
     @NotBlank
     @Min(6)
+    @Transient
     private String password;
+    
+    @NotBlank
+    @Min(6)
+    @Transient
+    private String confirmPassword;
     
     @Enumerated(EnumType.STRING)
 	@ElementCollection
@@ -48,8 +58,6 @@ public class User implements Serializable {
     @NotBlank
     private String lastName;
 
-    @NotBlank
-    @Email
     private String email;
     
     @Valid
@@ -98,6 +106,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 	public String getFirstName() {

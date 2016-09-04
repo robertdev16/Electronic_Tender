@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -58,7 +57,7 @@ public class TenderController {
 
 	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 
-	private static String attachmentPath = "/resources/images/attached/";
+	private static String attachmentPath = "/resources/attached/";
 
 	@ModelAttribute
 	public void prepareCategories(Model model) {
@@ -99,6 +98,7 @@ public class TenderController {
 	@RequestMapping(value = "/detail/{tenderId}", method = RequestMethod.GET)
 	public String getTenderById(@PathVariable("tenderId") int tenderId, Model model) {
 		model.addAttribute("tender", tenderService.getTenderById(tenderId));
+		model.addAttribute("attachmentPath", attachmentPath);
 		return "tenderTile";
 	}
 
@@ -148,7 +148,7 @@ public class TenderController {
 		}
 
 		savedTender = tenderService.saveOrMerge(savedTender);
-		emailService.informMembersByEmail(emailService.getAllEmailsNeedInformedByTender(savedTender), savedTender.getTitle());
+		emailService.informMembersByEmail(savedTender);
 
 		redirect.addFlashAttribute("successNew", true);
 		return "redirect:/tender/detail/" + savedTender.getId();

@@ -16,5 +16,5 @@ public interface MemberService {
 	
 	public Member saveOrMerge(Member member);
 	
-	public void encodeMemberPassword(Member member);
+	public void saveMemberAccount(Member member);
 }

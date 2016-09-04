@@ -1,84 +1,110 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
-        <div class="page-header">
-            <h1>Register Member</h1>
+<div id="centerDiv">
+	<h1><spring:message code="register.page.h1" text="Register a Member" /></h1>
 
-            <p class="lead">Please fill in your information below:</p>
-        </div>
+	<fieldset>
+		<legend><spring:message code="register.page.legend" text="Please Input Registration Form" /></legend>
 
-        <form:form modelAttribute="newMember">
+	<form:form modelAttribute="newMember">
 
-        <h3>Basic Info:</h3>
+		<div class="form-group">
+			<form:errors path="*" cssClass="formErrorInfo" />
+		</div>
 
-        <div class="form-group">
-            <label for="name">Name *</label>
-            <form:errors path="customerName" cssStyle="color: #ff0000" />
-            <form:input path="customerName" id="name" class="form-Control" />
-        </div>
+		<div class="form-group">
+			<label for="user.username"><spring:message code="register.page.username" text="Account Email (Username)" />: </label>
+			<form:input path="user.username" />
+			<form:errors path="user.username" cssClass="formErrorInfo" />
+		</div>
+		
+		<div class="form-group">
+			<label for="user.password"><spring:message code="register.page.password" text="Password" />: </label>
+			<form:password path="user.password" />
+			<form:errors path="user.password" cssClass="formErrorInfo" />
+		</div>
+		
+		<div class="form-group">
+			<label for="user.confirmPassword"><spring:message code="register.page.confirmPassword" text="Confirm Password" />: </label>
+			<form:password path="user.confirmPassword" />
+			<form:errors path="user.confirmPassword" cssClass="formErrorInfo" />
+		</div>
+		
+		<div class="form-group">
+			<label for="user.firstName"><spring:message code="register.page.firstName" text="First Name" />: </label>
+			<form:input path="user.firstName" />
+			<form:errors path="user.firstName" cssClass="formErrorInfo" />
+		</div>
+		
+		<div class="form-group">
+			<label for="user.lastName"><spring:message code="register.page.lastName" text="Last Name" />: </label>
+			<form:input path="user.lastName" />
+			<form:errors path="user.lastName" cssClass="formErrorInfo" />
+		</div>
+		
+		<div class="form-group">
+			<label for="user.phone.area"><spring:message code="register.page.phone" text="Phone" />: </label>
+			(<form:input path="user.phone.area" size="3" maxlength="3" />)
+			<form:input path="user.phone.prefix" size="3" maxlength="3" /> -
+			<form:input path="user.phone.number" size="4" maxlength="4" /><br />
+			<spring:message code="register.page.phoneFormat" 
+				text="Please use format (area) prefix-number like this: (641) 472-1188" />
+					<br />
+			<form:errors path="user.phone.area" cssStyle="color: red;" /><br />
+			<form:errors path="user.phone.prefix" cssStyle="color: red;" /><br />
+			<form:errors path="user.phone.number" cssStyle="color: red;" />
+		</div>
+		
+		<h3><spring:message code="register.page.address" text="Your Address Info" />:</h3>
+		<div class="form-group">
+			<label for="user.address.streetName"><spring:message code="register.page.street" text="Street" />: </label>
+			<form:input path="user.address.streetName" />
+			<form:errors path="user.address.streetName" cssClass="formErrorInfo" />
+		</div>
+		
+		<div class="form-group">
+			<label for="user.address.apartmentNumber"><spring:message code="register.page.unit" text="Unit" />: </label>
+			<form:input path="user.address.apartmentNumber" />
+			<form:errors path="user.address.apartmentNumber" cssClass="formErrorInfo" />
+		</div>
+		
+		<div class="form-group">
+			<label for="user.address.city"><spring:message code="register.page.city" text="City" />: </label>
+			<form:input path="user.address.city" />
+			<form:errors path="user.address.city" cssClass="formErrorInfo" />
+		</div>
+		
+		<div class="form-group">
+			<label for="user.address.state"><spring:message code="register.page.state" text="State" />: </label>
+			<form:input path="user.address.state" />
+			<form:errors path="user.address.state" cssClass="formErrorInfo" />
+		</div>
+		
+		<div class="form-group">
+			<label for="user.address.zipCode"><spring:message code="register.page.zipCode" text="Zip Code" />: </label>
+			<form:input path="user.address.zipCode" />
+			<form:errors path="user.address.zipCode" cssClass="formErrorInfo" />
+		</div>
 
-        <div class="form-group">
-            <label for="email">Email *</label>
-            <span style="color: #ff0000">${emailMsg}</span>
-            <form:errors path="customerEmail" cssStyle="color: #ff0000" />
-            <form:input path="customerEmail" id="email" class="form-Control" />
-        </div>
+		<div class="form-group">
+			<label for="user.address.country"><spring:message code="register.page.country" text="Country" />: </label>
+			<form:input path="user.address.country" />
+			<form:errors path="user.address.country" cssClass="formErrorInfo" />
+		</div>
 
-        <div class="form-group">
-            <label for="phone">Phone</label>
-            <form:input path="customerPhone" id="phone" class="form-Control" />
-        </div>
-
-        <div class="form-group">
-            <label for="username">User name *</label>
-            <span style="color: #ff0000">${usernameMsg}</span>
-            <form:errors path="username" cssStyle="color: #ff0000" />
-            <form:input path="username" id="username" class="form-Control" />
-        </div>
-
-        <div class="form-group">
-            <label for="password">Password *</label>
-            <form:errors path="password" cssStyle="color: #ff0000" />
-            <form:password path="password" id="password" class="form-Control" />
-        </div>
-
-        <br/>
-
-        <h3>Address:</h3>
-
-        <div class="form-group">
-            <label for="Street">Street Name *</label>
-            <form:errors path="Address.streetName" cssStyle="color: #ff0000" />
-            <form:input path="Address.streetName" id="Street" class="form-Control" />
-        </div>
-        <div class="form-group">
-            <label for="City">City *</label>
-            <form:errors path="Address.city" cssStyle="color: #ff0000" />
-            <form:input path="Address.city" id="City" class="form-Control" />
-        </div>
-
-        <div class="form-group">
-            <label for="State">State *</label>
-            <form:errors path="Address.state" cssStyle="color: #ff0000" />
-            <form:input path="Address.state" id="State" class="form-Control" />
-        </div>
-
-        <div class="form-group">
-            <label for="Country">Country *</label>
-            <form:errors path="Address.country" cssStyle="color: #ff0000" />
-            <form:input path="Address.country" id="Country" class="form-Control" />
-        </div>
-
-        <div class="form-group">
-            <label for="Zip">Zip code *</label>
-            <form:errors path="Address.zipCode" cssStyle="color: #ff0000" />
-            <form:input path="Address.zipCode" id="Zip" class="form-Control" />
-        </div>
-
-
-        <input type="submit" value="submit" >
-        <a href="<c:url value="/" />" >Cancel</a>
-
-        </form:form>
+		<h3><spring:message code="register.page.subscribe" text="Subscribe to your favorite category" />:</h3>
+		<div class="form-group">
+				<div id="checkboxesDiv">
+					<form:checkboxes items="${categoryMap}" path="checkedCategoryIDs" />
+				</div>
+		</div>
+		
+		<div class="form-group">
+			<input type="submit" value='<spring:message code="register.page.button" text="Register" />' />
+		</div>
+	</form:form>
+	</fieldset>
+</div>

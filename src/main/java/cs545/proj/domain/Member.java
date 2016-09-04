@@ -29,10 +29,7 @@ public class Member implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 
-	private String organizationName;
-
-	@Transient
-	private MultipartFile licenseMultipart;
+	private String organizationName="Your Organization Name";
 
 	private String licenseFileName="";
 
@@ -64,14 +61,6 @@ public class Member implements Serializable {
 
 	public void setOrganizationName(String organizationName) {
 		this.organizationName = organizationName;
-	}
-
-	public MultipartFile getLicenseMultipart() {
-		return licenseMultipart;
-	}
-
-	public void setLicenseMultipart(MultipartFile licenseMultipart) {
-		this.licenseMultipart = licenseMultipart;
 	}
 
 	public String getLicenseFileName() {

@@ -3,17 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
-<head>
-<title>Edit Category</title>
-<style type="text/css">@import url("<c:url value="/css/main.css"/>");</style>
-</head>
 <body>
 
 <spring:url var = "category_update" value="/category/update" />
 
 
-<div id="global">
-<form:form commandName="category" action= "${category_update}" >
+<div id="centerDiv">
+<form:form modelAttribute="category" action= "${category_update}" >
     <fieldset>
         <legend>Edit a category</legend>
         <form:hidden path="id"/>

@@ -3,15 +3,12 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Category List</title>
   	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script type="text/javascript" src="<spring:url value="/resources/js/ajax.js"/>"></script>
-
-<style type="text/css">@import url("<spring:url value="/resources/css/main.css"/>");</style>
 </head>
 <body>
 
-<div id="global">
+<div id="centerDiv">
 <h1>Category List</h1>
  
 <table>
@@ -74,7 +71,7 @@
     
     </form>
   <h4 align="center"> 
-     <a href="#" onclick="make_hidden('formInput'); make_hidden('result');resetForm('categoryForm');"> <b>EXIT</b> </a> 
+     <a href="#" onclick="make_hidden('formInput'); make_hidden('result'); resetForm('categoryForm'); window.location.reload();"> <b>EXIT</b> </a> 
   </h4>
 
 </div>

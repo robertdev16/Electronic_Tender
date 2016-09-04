@@ -21,14 +21,16 @@
 							
 							
 							
-							<p>Description: ${tender.description}</p>
+							<p>Description:<br />
+							<textarea readonly="readonly" rows="15" cols="80">${tender.description}</textarea>
+							</p>
 							Address:<br />
 							<blockquote>
-							<p>Street:${tender.address.streetName}</p>
-							<p>Apartment No:${tender.address.apartmentNumber}</p>
-							<p>City:${tender.address.city}</p>
-							<p>State:${tender.address.state}</p>
-							<p>Country:${tender.address.country}</p>
+							<p>Street: ${tender.address.streetName} ${tender.address.apartmentNumber}</p>
+							<p>City: ${tender.address.city}</p>
+							<p>State: ${tender.address.state}</p>
+							<p>Zip Code: ${tender.address.zipCode}</p>
+							<p>Country: ${tender.address.country}</p>
 							</blockquote>
 							<p>Phone: (${tender.phone.area}) ${tender.phone.prefix}-${tender.phone.number}</p>
 							
@@ -38,7 +40,7 @@
 							
 							<c:if test="${not empty tender.attachmentFileName}">
 								<p>Attachment: 
-								<a href="<spring:url value='/resources/images/attached/${tender.attachmentFileName}'/>">
+								<a href="<spring:url value='${attachmentPath}${tender.attachmentFileName}'/>">
 								${tender.attachmentFileName}
 								</a>
 								</p>

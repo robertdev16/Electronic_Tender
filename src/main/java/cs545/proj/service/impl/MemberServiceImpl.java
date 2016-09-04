@@ -8,7 +8,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cs545.proj.domain.Account;
 import cs545.proj.domain.Member;
+import cs545.proj.repository.AccountRepository;
 import cs545.proj.repository.MemberRepository;
 import cs545.proj.service.MemberService;
 
@@ -18,7 +20,12 @@ public class MemberServiceImpl implements MemberService {
 	
  	@Autowired
 	private MemberRepository memberRepository;
+ 	
+ 	@Autowired
+ 	private AccountRepository accountRepository;
 
+ 	private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+ 	
 	@Override
 	public Member getMemberByUsername(String username) {
 		List<Member> memberList = memberRepository.findByUser_Username(username);
@@ -46,10 +53,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void encodeMemberPassword(Member member) {
-		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		member.getUser().setPassword(passwordEncoder.encode(member.getUser().getPassword()));
-		saveOrMerge(member);
+	public void saveMemberAccount(Member member) {
+		Account account = new Account();
+		account.setUsername(member.getUser().getUsername());
+		account.setPassword(passwordEncoder.encode(member.getUser().getPassword()));
+		accountRepository.saveAndFlush(account);
 	}
 
 }

@@ -20,7 +20,8 @@
 		<security:intercept-url pattern="/tender/new" access="hasAnyRole('ROLE_ORGANIZATION', 'ROLE_EMPLOYEE', 'ROLE_ADMIN')" />
 		<security:intercept-url pattern="/tender/**" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ORGANIZATION', 'ROLE_EMPLOYEE', 'ROLE_ADMIN')" />
 		<security:intercept-url pattern="/member/register" access="hasRole('ROLE_ANONYMOUS')" />
-		<security:intercept-url pattern="/member/detail/*" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ORGANIZATION', 'ROLE_ADMIN')" />
+		<security:intercept-url pattern="/member/new" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/member/detail" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ORGANIZATION', 'ROLE_ADMIN')" />
 		<security:intercept-url pattern="/member/**" access="hasRole('ROLE_ADMIN')" />
 		
 		<security:intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
@@ -44,7 +45,7 @@
 			<security:password-encoder hash="bcrypt" />
 			<security:jdbc-user-service
 				data-source-ref="dataSource"
-				users-by-username-query="select username, password, true as enabled from user where username = ?"
+				users-by-username-query="select username, password, true as enabled from account where username = ?"
 				authorities-by-username-query="select u.username, ur.roleSet as authority from user u, user_roleset ur where u.id = ur.User_id and u.username = ?" />
 		</security:authentication-provider>
 	</security:authentication-manager>

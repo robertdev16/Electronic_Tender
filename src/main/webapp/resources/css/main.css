@@ -215,7 +215,7 @@ body {
 	cursor: pointer;
 }
 
-#rightDiv input[type="submit"] {
+input[type="submit"] {
 	font-size: 1.2em;
 	font-weight: bold;
 }
@@ -225,7 +225,7 @@ button {
 	font-weight: bold;
 }
 
-.formErrorInfo, .text-danger {
+.formErrorInfo {
 	color: red;
 }
 
@@ -267,11 +267,6 @@ button {
 
 #searchInput {
 	font-size: 1.0em;
-}
-
-#searchArea input[type="submit"] {
-	font-size: 1.2em;
-	font-weight: bold;
 }
 
 .padding5pxDiv {

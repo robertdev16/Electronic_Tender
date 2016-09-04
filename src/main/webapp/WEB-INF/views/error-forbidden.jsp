@@ -15,7 +15,7 @@
 
 <center>
 
-<img src="<spring:url value="/resources/images/403-forbidden-error.jpg"  htmlEscape="true" />" alt="Page not found  JSP!!!"  />
+<img src="<spring:url value="/resources/images/403-forbidden-error.jpg"  htmlEscape="true" />" alt="Forbidden Error!"  />
 
 <H2>${requestScope['javax.servlet.error.message']}</H2>
  

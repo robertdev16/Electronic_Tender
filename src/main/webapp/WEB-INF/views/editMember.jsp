@@ -15,8 +15,8 @@
 <spring:url var = "member_update" value="/member/update" />
 
 
-<div id="global">
-<form:form commandName="newMember" action= "${member_update}" >
+<div id="centerDiv">
+<form:form modelAttribute="newMember" action= "${member_update}" >
     <fieldset>        
         <legend>Edit a member</legend>
         <form:hidden path="id"/>
