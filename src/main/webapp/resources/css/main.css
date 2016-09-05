@@ -225,6 +225,10 @@ button {
 	font-weight: bold;
 }
 
+legend {
+	font-size: 1.2em;
+}
+
 .formErrorInfo {
 	color: red;
 }
@@ -279,4 +283,22 @@ button {
 
 .textAlignRightDiv {
 	text-align: right;
+}
+
+.inlineList {
+	display: inline-block;
+	padding: 10px;
+}
+
+.blueInfo {
+	display: inline-block;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: left;
+	color: blue;
+	padding: 10px;
+}
+
+#centerDiv table {
+	text-align: center;
 }

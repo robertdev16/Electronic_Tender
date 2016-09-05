@@ -19,7 +19,7 @@
 
 <H2>${requestScope['javax.servlet.error.message']}</H2>
  
- <p><button type=button onclick=window.location.href="<spring:url value="/" />">Home</button></p>
+ <p><button type=button onclick="window.location.href='<spring:url value="/" />'">Home</button></p>
 
 </center> 
   </body>

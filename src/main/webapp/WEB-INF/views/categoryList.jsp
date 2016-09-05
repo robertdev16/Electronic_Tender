@@ -10,19 +10,20 @@
 
 <div id="centerDiv">
 <h1>Category List</h1>
- 
+<input type="button" value="Add Category" onclick="make_visible('formInput');return false;">
+<br /><br />
 <table>
 <tr style="width: 100%;">
-    <th style="width: 19%;">Name</th>
-    <th style="width: 21%;">Description</th>
-    <th style="width: 21%;">No. Tenders</th>    
-    <th style="width: 15%;"></th>
+    <th style="width: 30%;">Name</th>
+    <th style="width: 50%;">Description</th>
+    <th style="width: 10%;">No. Tenders</th>    
+    <th style="width: 10%;">Edit</th>
 </tr>
 <c:forEach items="${categories}" var="category">
     <tr>
         <td>${category.name}</td>
         <td>${category.description}</td>
-         <td>${category.tenderList.size()}</td>        
+        <td>${category.tenderList.size()}</td>        
         
         <!-- Spring:url for handling Spring template/@PathVariable -->
         <spring:url value="/category/edit/{id}"  var="edit" >
@@ -33,9 +34,6 @@
     </tr>
 </c:forEach>
 </table>
- 
-  <input type="button" value="Add Category" onclick="make_visible('formInput');return false;">
-
 </div>
  
  		<!-- Success - or Validation errors -->

@@ -14,20 +14,26 @@
         <legend>Edit a category</legend>
         <form:hidden path="id"/>
         
-        <p>
-            <label for="name">Name : </label>
-            <form:input id="name" path="name"/>
-        </p>
-        <p>
-            <label for="description">Description: </label>
-            <form:input id="description" path="description"/>
-        </p>
+        <div class="form-group">
+			<form:errors path="*" cssClass="formErrorInfo" />
+		</div>
         
-        <p id="buttons">
-            <input id="reset" type="reset" tabindex="4">
-            <input id="submit" type="submit" tabindex="5" 
-                value="Update Category">
-        </p>
+        <div class="form-group">
+            <label for="name">Name : </label>
+            <form:input path="name"/>
+            <form:errors path="name" cssClass="formErrorInfo" />
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description: </label>
+            <form:input path="description"/>
+            <form:errors path="description" cssClass="formErrorInfo" />
+        </div>
+        
+        <div class="form-group">
+            <input type="reset">
+            <input type="submit" value="Update Category">
+        </div>
     </fieldset>
 </form:form>
 </div>

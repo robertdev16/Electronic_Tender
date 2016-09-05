@@ -32,7 +32,7 @@
 		
 
 		<p>
-			<button type=button onclick=window.location.href="<spring:url value='/home' />">Home</button>
+			<button type=button onclick="window.location.href='<spring:url value="/" />'">Home</button>
 		</p>
 
 	</center>

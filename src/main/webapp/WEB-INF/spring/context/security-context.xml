@@ -20,9 +20,9 @@
 		<security:intercept-url pattern="/tender/new" access="hasAnyRole('ROLE_ORGANIZATION', 'ROLE_EMPLOYEE', 'ROLE_ADMIN')" />
 		<security:intercept-url pattern="/tender/**" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ORGANIZATION', 'ROLE_EMPLOYEE', 'ROLE_ADMIN')" />
 		<security:intercept-url pattern="/member/register" access="hasRole('ROLE_ANONYMOUS')" />
-		<security:intercept-url pattern="/member/new" access="hasRole('ROLE_MEMBER')" />
-		<security:intercept-url pattern="/member/detail" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ORGANIZATION', 'ROLE_ADMIN')" />
-		<security:intercept-url pattern="/member/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/member/new" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ORGANIZATION')" />
+		<security:intercept-url pattern="/member/detail" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ORGANIZATION')" />
+		<security:intercept-url pattern="/member/selfedit" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ORGANIZATION')" />
 		
 		<security:intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
 

@@ -59,6 +59,10 @@
  		<put-attribute name="center" value="/WEB-INF/views/categoryList.jsp" />
 	</definition>
 	
+	<definition name="editCategoryTile" extends="baseLayout">
+ 		<put-attribute name="center" value="/WEB-INF/views/editCategory.jsp" />
+	</definition>
+	
 	<definition name="memberListTile" extends="baseLayout">
  		<put-attribute name="center" value="/WEB-INF/views/memberList.jsp" />
 	</definition>
@@ -74,6 +78,5 @@
 	<definition name="registerTile" extends="baseLayout">
  		<put-attribute name="center" value="/WEB-INF/views/registerMember.jsp" />
 	</definition>
-	
-	
+
 </tiles-definitions>

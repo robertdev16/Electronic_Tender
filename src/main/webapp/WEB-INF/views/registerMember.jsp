@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -7,7 +6,7 @@
 	<h1><spring:message code="register.page.h1" text="Register a Member" /></h1>
 
 	<fieldset>
-		<legend><spring:message code="register.page.legend" text="Please Input Registration Form" /></legend>
+		<legend><spring:message code="register.page.legend" text="Please Fill Out Registration Form" /></legend>
 
 	<form:form modelAttribute="newMember">
 

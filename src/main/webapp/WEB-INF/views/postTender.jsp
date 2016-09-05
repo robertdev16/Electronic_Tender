@@ -130,7 +130,7 @@
 			<div class="form-group">
 				<label for="tenderMultipart"><spring:message
 						code="addTender.form.tenderMultipart.label"
-						text="Upload Attachment (Max Upload File Size is 5MB)" /></label>
+						text="Upload Attachment (Max File Size is 5MB)" /></label>
 				<form:input path="tenderMultipart" type="file" />
 			</div>
 

@@ -39,19 +39,21 @@ public class CategoryController {
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String getEditCatalogForm(@PathVariable("id") int id, Model model) {
-		Category category = categoryService.getCategoryById(id);
-		model.addAttribute("category", category);
-		return "editCategory";
+		model.addAttribute("category", categoryService.getCategoryById(id));
+		return "editCategoryTile";
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String categoryupdate(@Valid @ModelAttribute("category") Category categoryToBeEdited, BindingResult result,
+	public String categoryupdate(@Valid @ModelAttribute("category") Category category, BindingResult result,
 			HttpServletRequest request) {
 		if (result.hasErrors()) {
-			return "editCategory";
+			return "editCategoryTile";
 		}
-		categoryService.saveOrMerge(categoryToBeEdited);
+
+		Category oldCategory = categoryService.getCategoryById(category.getId());
+		oldCategory.setName(category.getName());
+		oldCategory.setDescription(category.getDescription());
+		categoryService.saveOrMerge(oldCategory);
 		return "redirect:/category/all";
 	}
-
 }

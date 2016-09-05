@@ -32,6 +32,9 @@ public class Member implements Serializable {
 	private String organizationName="Your Organization Name";
 
 	private String licenseFileName="";
+	
+	@Transient
+    private MultipartFile licenseMultipart;
 
 	@ManyToMany(mappedBy = "subscribedMembers")
 	private List<Category> selectedCategories = new ArrayList<Category>();
@@ -69,6 +72,14 @@ public class Member implements Serializable {
 
 	public void setLicenseFileName(String licenseFileName) {
 		this.licenseFileName = licenseFileName;
+	}
+
+	public MultipartFile getLicenseMultipart() {
+		return licenseMultipart;
+	}
+
+	public void setLicenseMultipart(MultipartFile licenseMultipart) {
+		this.licenseMultipart = licenseMultipart;
 	}
 
 	public List<Category> getSelectedCategories() {
